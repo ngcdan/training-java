@@ -1,4 +1,4 @@
-package training.java.design.pattern.composite;
+package training.java.design.pattern;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter @Setter
 @AllArgsConstructor
-public class Developer implements Employee {
+public class Manager implements Employee {
   private String name;
   private String position;
   
