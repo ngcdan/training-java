@@ -1,6 +1,9 @@
 package training.java.design.pattern;
 
 import org.junit.jupiter.api.Test;
+import training.java.design.pattern.composite.CompanyDirectory;
+import training.java.design.pattern.composite.Developer;
+import training.java.design.pattern.composite.Manager;
 
 public class CompositeUnitTest {
   @Test

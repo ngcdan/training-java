@@ -1,4 +1,4 @@
-package training.java.design.pattern;
+package training.java.design.pattern.composite;
 
 import java.util.ArrayList;
 import java.util.Collections;
