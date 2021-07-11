@@ -8,4 +8,12 @@ public class ColumnField {
   public ColumnField(Field field) {
     this.field = field;
   }
+  
+  public String getName() {
+    return this.field.getName();
+  }
+  
+  public Class<?> getType() {
+    return field.getType();
+  }
 }

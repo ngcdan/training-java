@@ -90,5 +90,11 @@ public class ReflectionUnitTest {
   System.out.println(
     "Primary Key: " + primaryKeyField.getName() +
       ", Type :" + primaryKeyField.getType().getSimpleName());
+  
+  for(ColumnField column : columnFields) {
+   System.out.println(
+     "Column Name: " + column.getName() +
+       ", Column Type :" + column.getType().getSimpleName());
+  }
  }
 }
