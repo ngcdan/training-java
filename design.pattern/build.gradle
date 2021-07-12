@@ -1,19 +1,10 @@
 plugins {
-    id 'java'
+    id 'training.java.java-application-conventions'
 }
 
-version 'v1.0.0'
-
-repositories {
-    mavenLocal()
-    mavenCentral()
-}
+version '0.1.0'
 
 dependencies {
-    compile 'org.projectlombok:lombok:1.18.16'
-    annotationProcessor 'org.projectlombok:lombok:1.18.16'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     compile group: 'org.apache.derby', name: 'derby', version: '10.14.1.0'
 }
 

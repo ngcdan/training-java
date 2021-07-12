@@ -8,8 +8,5 @@
  */
 
 rootProject.name = 'training-java'
-include('app', 'list', 'utilities')
-include 'design.pattern'
-include 'ds'
-include 'reflection'
+include('app', 'design.pattern', 'ds', 'reflection')
 
