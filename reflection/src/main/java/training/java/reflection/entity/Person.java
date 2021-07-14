@@ -19,10 +19,6 @@ public class Person {
   @Column
   private int age;
   
-  String getInfo() {
-    return name + " " + age;
-  }
-  
   public Person(String name, int age) {
     this.name = name;
     this.age = age;
@@ -30,5 +26,14 @@ public class Person {
   
   public static Person of(String name, int age) {
     return new Person(name, age);
+  }
+  
+  @Override
+  public String toString() {
+    return "Person{" +
+      "id=" + id +
+      ", name='" + name + '\'' +
+      ", age=" + age +
+      '}';
   }
 }

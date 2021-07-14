@@ -50,6 +50,13 @@ public class MetaModel {
     return columns;
   }
   
+  public String buildSelectOneRequest() {
+    // select id, name, age from person where id = ?
+    String columnElement = buildColumnElement();
+    return "SELECT " + columnElement + " FROM " + this.clss.getSimpleName() +
+      " WHERE " + getPrimaryKey().getName() + "= ?";
+  }
+  
   public String buildInsertRequest() {
     // insert into Person (id, name, age) value(?, ?, ?)
     String columnElement = buildColumnElement();

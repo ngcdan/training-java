@@ -32,6 +32,9 @@ public class ObjectRelationalUnitTest {
     entityManager.persist(nhat);
   
     System.out.println("Done!");
+    System.out.println(entityManager.getOne(Person.class, 1L));
+    System.out.println(entityManager.getOne(Person.class, 2L));
+    System.out.println(entityManager.getOne(Person.class, 3L));
     Thread.currentThread().join();
   }
 }
