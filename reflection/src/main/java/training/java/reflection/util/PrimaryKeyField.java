@@ -1,12 +1,16 @@
 package training.java.reflection.util;
 
+import training.java.reflection.annotation.PrimaryKey;
+
 import java.lang.reflect.Field;
 
 public class PrimaryKeyField {
   private Field field;
+  private PrimaryKey primaryKey;
   
   public PrimaryKeyField(Field field) {
     this.field = field;
+    this.primaryKey = this.field.getAnnotation(PrimaryKey.class);
   }
   
   public Class<?> getType() {
@@ -14,6 +18,10 @@ public class PrimaryKeyField {
   }
   
   public String getName() {
-    return field.getName();
+    return primaryKey.name();
+  }
+  
+  public Field getField() {
+    return this.field;
   }
 }

@@ -50,11 +50,25 @@ public class MetaModel {
     return columns;
   }
   
+  public String buildCreateTableRequest() {
+    //TODO: create table Person ( test_id int primary key, test_name varchar(40), test_age int)
+    
+    
+    return null;
+  }
+  
+  public String buildSelectOneRequest() {
+    // select id, name, age from person where id = ?
+    String columnElement = buildColumnElement();
+    return "SELECT " + columnElement + " FROM " + this.clss.getSimpleName() +
+      " WHERE " + getPrimaryKey().getName() + "= ?";
+  }
+  
   public String buildInsertRequest() {
     // insert into Person (id, name, age) value(?, ?, ?)
     String columnElement = buildColumnElement();
     String questionMarksElement = buildQuestionMarksElement();
-    return "INSERT INTO " + this.clss.getSimpleName() + " (" + columnElement + ") values (" + questionMarksElement + ")";
+    return "INSERT INTO " + this.clss.getSimpleName() + " (" + columnElement + ") VALUES (" + questionMarksElement + ")";
   }
   
   private String buildQuestionMarksElement() {
