@@ -1,5 +1,5 @@
 plugins {
-    id 'training.java.java-application-conventions'
+    id 'training.java.java-common-conventions'
 }
 
 version '0.1.0'

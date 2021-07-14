@@ -6,7 +6,11 @@ plugins {
     // Apply the java Plugin to add support for Java.
     id 'java'
     id 'eclipse'
+    id 'maven'
 }
+
+sourceCompatibility = 11
+targetCompatibility = 11
 
 repositories {
     mavenLocal()
@@ -29,7 +33,11 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.16'
 }
 
-tasks.named('test') {
+test {
     // Use junit platform for unit tests.
     useJUnitPlatform()
+
+    filter {
+        includeTestsMatching "*UnitTest"
+    }
 }

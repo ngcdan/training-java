@@ -5,9 +5,14 @@ plugins {
 version '0.1.0'
 
 dependencies {
-    testImplementation 'com.h2database:h2:1.4.200'
+    compile 'com.h2database:h2:1.4.200'
 }
 
 test {
     useJUnitPlatform()
+}
+
+application {
+    // Define the main class for the application.
+    mainClass = 'training.java.reflection.DBLauncher'
 }

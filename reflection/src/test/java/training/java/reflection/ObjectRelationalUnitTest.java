@@ -1,17 +1,10 @@
 package training.java.reflection;
 
-import org.h2.tools.Server;
 import org.junit.jupiter.api.Test;
 import training.java.reflection.entity.Person;
 import training.java.reflection.orm.EntityManager;
 
 public class ObjectRelationalUnitTest {
-  
-  @Test
-  public void objectRelationalUnitTest() throws Exception {
-   Server.main();
-    System.out.println("DB Launched!");
-  }
   
   @Test
   public void writingObject() throws Exception {
