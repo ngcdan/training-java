@@ -10,13 +10,13 @@ import training.java.reflection.annotation.PrimaryKey;
 @NoArgsConstructor
 public class Person {
   
-  @PrimaryKey
+  @PrimaryKey(name = "test_id")
   private Long id;
   
-  @Column
+  @Column(name = "test_name")
   private String name;
   
-  @Column
+  @Column(name = "test_age")
   private int age;
   
   public Person(String name, int age) {

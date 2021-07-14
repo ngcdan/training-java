@@ -5,8 +5,10 @@ import java.sql.SQLException;
 
 public interface EntityManager<T> {
   static <T> EntityManager<T> of(Class<T> clss) {
-    return new EntityManagerImpl<>();
+    return new H2EntityManager<>();
   }
+  
+  void createTable(Class<T> clss) throws SQLException;
   
   void persist(T t) throws SQLException, IllegalAccessException;
   
