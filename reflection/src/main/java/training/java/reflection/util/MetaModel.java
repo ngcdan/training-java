@@ -54,7 +54,7 @@ public class MetaModel {
     // insert into Person (id, name, age) value(?, ?, ?)
     String columnElement = buildColumnElement();
     String questionMarksElement = buildQuestionMarksElement();
-    return "INSERT INTO " + this.clss.getSimpleName() + " (" + columnElement + ") values (" + questionMarksElement + ")";
+    return "INSERT INTO " + this.clss.getSimpleName() + " (" + columnElement + ") VALUES (" + questionMarksElement + ")";
   }
   
   private String buildQuestionMarksElement() {
