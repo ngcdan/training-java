@@ -2,8 +2,10 @@ package training.java.reflection;
 
 import org.h2.tools.Server;
 import org.junit.jupiter.api.Test;
+import training.java.reflection.beanmanager.BeanManager;
 import training.java.reflection.entity.Person;
 import training.java.reflection.orm.EntityManager;
+import training.java.reflection.orm.ManagedEntityManager;
 
 public class ObjectRelationalUnitTest {
   
@@ -11,7 +13,10 @@ public class ObjectRelationalUnitTest {
   public void writingObject() throws Exception {
     Server.main("-ifNotExists");
     System.out.println("DB Launched!");
-    EntityManager<Person> entityManager = EntityManager.of(Person.class);
+    
+    BeanManager beanManager = BeanManager.getInstance();
+    
+    EntityManager<Person> entityManager = beanManager.getInstance(ManagedEntityManager.class);
     System.out.println("Create Table Person");
     entityManager.createTable(Person.class);
     

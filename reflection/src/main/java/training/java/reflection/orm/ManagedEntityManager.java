@@ -1,6 +1,7 @@
 package training.java.reflection.orm;
 
 import lombok.Getter;
+import training.java.reflection.annotation.Inject;
 import training.java.reflection.util.ColumnField;
 import training.java.reflection.util.MetaModel;
 
@@ -12,10 +13,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.concurrent.atomic.AtomicLong;
 
-public abstract class AbstractEntityManager<T> implements EntityManager<T> {
+public class ManagedEntityManager<T> implements EntityManager<T> {
   private AtomicLong idGenerator = new AtomicLong(0L);
   
-  public abstract Connection getConnection() throws SQLException;
+  @Inject
+  private Connection connection;
   
   @Override
   public void persist(T t) throws SQLException, IllegalAccessException {
@@ -29,7 +31,9 @@ public abstract class AbstractEntityManager<T> implements EntityManager<T> {
   }
   
   @Override
-  public T getOne(Class<T> clss, Object primaryKey) throws SQLException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+  public T getOne(Class<T> clss, Object primaryKey)
+    throws SQLException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    
     MetaModel metaModel = MetaModel.of(clss);
     String sql = metaModel.buildSelectOneRequest();
     System.out.println(sql);
@@ -50,7 +54,9 @@ public abstract class AbstractEntityManager<T> implements EntityManager<T> {
     }
   }
   
-  private T buildInstance(Class<T> clss, ResultSet resultSet) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, SQLException {
+  private T buildInstance(Class<T> clss, ResultSet resultSet)
+    throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, SQLException {
+    
     MetaModel metaModel = MetaModel.of(clss);
     T t = clss.getConstructor().newInstance();
     Field primaryKeyField = metaModel.getPrimaryKey().getField();
@@ -82,8 +88,7 @@ public abstract class AbstractEntityManager<T> implements EntityManager<T> {
   }
   
   private PreparedStatementWrapper prepareStatementWith(String sql) throws SQLException {
-    Connection conn = getConnection();
-    PreparedStatement statement = conn.prepareStatement(sql);
+    PreparedStatement statement = connection.prepareStatement(sql);
     return new PreparedStatementWrapper(statement);
   }
   

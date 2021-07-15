@@ -52,9 +52,29 @@ public class MetaModel {
   
   public String buildCreateTableRequest() {
     //TODO: create table Person ( test_id int primary key, test_name varchar(40), test_age int)
+    return "CREATE TABLE " + this.clss.getSimpleName() + " ( " + buildPrimaryKeyColumn() + " , " + buildFieldColumn() + " )";
+  }
+  
+  private String buildFieldColumn() {
+    List<ColumnField> columns = getColumns();
+    StringBuilder buildFieldColumn = new StringBuilder();
+    for( int i = 0; i < columns.size(); i++) {
+      ColumnField columnField = columns.get(i);
+      String columnType = null;
+      Class<?> columnFieldType = columnField.getType();
+      if(columnFieldType == String.class) {
+        columnType = "VARCHAR(255)";
+      } else if(columnFieldType == int.class) {
+        columnType = "INT";
+      }
+      //TODO: handle diff column type
+      buildFieldColumn.append(columnField.getName()).append(" ").append(columnType);
+      if(i < columns.size() - 1) {
+        buildFieldColumn.append(", ");
+      }
+    }
     
-    
-    return null;
+    return buildFieldColumn.toString();
   }
   
   public String buildSelectOneRequest() {
@@ -69,6 +89,17 @@ public class MetaModel {
     String columnElement = buildColumnElement();
     String questionMarksElement = buildQuestionMarksElement();
     return "INSERT INTO " + this.clss.getSimpleName() + " (" + columnElement + ") VALUES (" + questionMarksElement + ")";
+  }
+  
+  private String buildPrimaryKeyColumn() {
+    PrimaryKeyField primaryKey = getPrimaryKey();
+    String primaryKeyColumnName = primaryKey.getName();
+    Class<?> primaryKeyType = primaryKey.getType();
+    String primaryKeyColumnType = null;
+    if(primaryKeyType == Long.class) {
+      primaryKeyColumnType = "INT";
+    }
+    return primaryKeyColumnName + " " + primaryKeyColumnType + " primary key";
   }
   
   private String buildQuestionMarksElement() {
