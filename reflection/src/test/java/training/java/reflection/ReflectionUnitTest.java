@@ -24,7 +24,6 @@ public class ReflectionUnitTest {
   Class<? extends String> worldClass = "World".getClass();
   Assertions.assertEquals(helloClass, worldClass);
   
-  
   Class<String> stringClass = String.class;
   Assertions.assertEquals(helloClass, stringClass);
   
@@ -88,13 +87,17 @@ public class ReflectionUnitTest {
   List<ColumnField> columnFields = metaModel.getColumns();
   
   System.out.println(
-    "Primary Key: " + primaryKeyField.getName() +
-      ", Type :" + primaryKeyField.getType().getSimpleName());
+    "Primary Key: "
+      + primaryKeyField.getName()
+      + ", Type :"
+      + primaryKeyField.getType().getSimpleName());
   
-  for(ColumnField column : columnFields) {
+  for (ColumnField column : columnFields) {
    System.out.println(
-     "Column Name: " + column.getName() +
-       ", Column Type :" + column.getType().getSimpleName());
+     "Column Name: "
+       + column.getName()
+       + ", Column Type :"
+       + column.getType().getSimpleName());
   }
  }
 }
