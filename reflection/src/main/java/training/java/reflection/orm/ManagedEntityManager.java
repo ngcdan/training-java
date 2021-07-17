@@ -15,61 +15,61 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class ManagedEntityManager<T> implements EntityManager<T> {
   private AtomicLong idGenerator = new AtomicLong(0L);
-  
-  @Inject
-  private Connection connection;
-  
+
+  @Inject private Connection connection;
+
   @Override
   public void persist(T t) throws SQLException, IllegalAccessException {
     MetaModel metaModel = MetaModel.of(t.getClass());
     String sql = metaModel.buildInsertRequest();
     System.out.println(sql);
-    
-    try (PreparedStatement statement = prepareStatementWith(sql).addParameters(t);) {
+
+    try (PreparedStatement statement = prepareStatementWith(sql).addParameters(t); ) {
       statement.executeUpdate();
     }
   }
-  
+
   @Override
   public T getOne(Class<T> clss, Object primaryKey)
-    throws SQLException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-    
+      throws SQLException, InvocationTargetException, NoSuchMethodException, InstantiationException,
+          IllegalAccessException {
+
     MetaModel metaModel = MetaModel.of(clss);
     String sql = metaModel.buildSelectOneRequest();
     System.out.println(sql);
-    try (
-      PreparedStatement statement = prepareStatementWith(sql).addPrimaryKey(primaryKey);
-      ResultSet resultSet = statement.executeQuery();) {
+    try (PreparedStatement statement = prepareStatementWith(sql).addPrimaryKey(primaryKey);
+        ResultSet resultSet = statement.executeQuery(); ) {
       return buildInstance(clss, resultSet);
     }
   }
-  
+
   @Override
   public void createTable(Class<T> clss) throws SQLException {
     MetaModel metaModel = MetaModel.of(clss);
     String sql = metaModel.buildCreateTableRequest();
     System.out.println(sql);
-    try(PreparedStatement statement = prepareStatementWith(sql).getStatement()) {
+    try (PreparedStatement statement = prepareStatementWith(sql).getStatement()) {
       statement.executeUpdate();
     }
   }
-  
+
   private T buildInstance(Class<T> clss, ResultSet resultSet)
-    throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, SQLException {
-    
+      throws NoSuchMethodException, InvocationTargetException, InstantiationException,
+          IllegalAccessException, SQLException {
+
     MetaModel metaModel = MetaModel.of(clss);
     T t = clss.getConstructor().newInstance();
     Field primaryKeyField = metaModel.getPrimaryKey().getField();
     String primaryKeyColumnName = metaModel.getPrimaryKey().getName();
     Class<?> primaryKeyType = metaModel.getPrimaryKey().getType();
-    
+
     resultSet.next();
     if (primaryKeyType == Long.class) {
       Long primaryKey = resultSet.getLong(primaryKeyColumnName);
       primaryKeyField.setAccessible(true);
       primaryKeyField.set(t, primaryKey);
     }
-    
+
     for (ColumnField columnField : metaModel.getColumns()) {
       Field field = columnField.getField();
       field.setAccessible(true);
@@ -83,24 +83,23 @@ public class ManagedEntityManager<T> implements EntityManager<T> {
         field.set(t, value);
       }
     }
-    
+
     return t;
   }
-  
+
   private PreparedStatementWrapper prepareStatementWith(String sql) throws SQLException {
     PreparedStatement statement = connection.prepareStatement(sql);
     return new PreparedStatementWrapper(statement);
   }
-  
+
   class PreparedStatementWrapper {
-    
-    @Getter
-    private PreparedStatement statement;
-    
+
+    @Getter private PreparedStatement statement;
+
     public PreparedStatementWrapper(PreparedStatement statement) {
       this.statement = statement;
     }
-    
+
     public PreparedStatement addParameters(T t) throws SQLException, IllegalAccessException {
       MetaModel metaModel = MetaModel.of(t.getClass());
       Class<?> primaryKeyType = metaModel.getPrimaryKey().getType();
@@ -111,7 +110,7 @@ public class ManagedEntityManager<T> implements EntityManager<T> {
         field.setAccessible(true);
         field.set(t, id);
       }
-      
+
       for (int columIndex = 0; columIndex < metaModel.getColumns().size(); columIndex++) {
         ColumnField columnField = metaModel.getColumns().get(columIndex);
         Class<?> fieldType = columnField.getType();
@@ -126,7 +125,7 @@ public class ManagedEntityManager<T> implements EntityManager<T> {
       }
       return statement;
     }
-    
+
     public PreparedStatement addPrimaryKey(Object primaryKey) throws SQLException {
       if (primaryKey.getClass() == Long.class) {
         statement.setLong(1, (Long) primaryKey);
