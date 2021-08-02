@@ -1,4 +1,4 @@
-package training.java.ds.list;
+package training.java.ds;
 
 import org.junit.jupiter.api.Test;
 import training.java.ds.map.HashMap;

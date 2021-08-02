@@ -1,7 +1,8 @@
-package training.java.ds.list;
+package training.java.ds;
 
 
 import org.junit.jupiter.api.Test;
+import training.java.ds.list.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
