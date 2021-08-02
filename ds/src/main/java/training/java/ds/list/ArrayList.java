@@ -79,10 +79,7 @@ public class ArrayList<T> implements List<T> {
   private void checkFull() {
     if(currPos == array.length) {
       T[] newArray = (T[]) new Object [(array.length * 3/2) + 1];
-
-      for(int i = 0; i < array.length; i++) {
-        newArray[i] = array[i];
-      }
+      System.arraycopy(array, 0, newArray, 0, array.length);
       array = newArray;
     }
   }

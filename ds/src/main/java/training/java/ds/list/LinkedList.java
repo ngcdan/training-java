@@ -113,6 +113,7 @@ public class LinkedList<T> implements List<T> {
     for(int i = 0; i < pos && currNode != null; i++) {
       currNode = currNode.getNext();
     }
+    assert currNode != null;
     currNode.setValue(obj);
   }
   
