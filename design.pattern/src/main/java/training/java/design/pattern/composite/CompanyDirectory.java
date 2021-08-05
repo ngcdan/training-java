@@ -12,7 +12,5 @@ public class CompanyDirectory implements Employee {
   }
   
   @Override
-  public void showEmployeeDetails() {
-  
-  }
+  public void showEmployeeDetails() {}
 }
