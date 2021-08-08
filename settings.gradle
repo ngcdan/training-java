@@ -9,4 +9,5 @@
 
 rootProject.name = 'training-java'
 include('app', 'design.pattern', 'ds', 'reflection')
+include 'object.orented'
 
