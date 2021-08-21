@@ -1,35 +1,9 @@
-plugins {
-    // Apply the application plugin to add support for building a CLI application in Java.
-    id 'application'
-    // Apply the java Plugin to add support for Java.
-    id 'java'
-    id 'eclipse'
-    id 'maven'
-}
+archivesBaseName = "training-java-object-orented"
 
-version '0.1.0'
-
-repositories {
-    mavenLocal()
-    mavenCentral()
-}
-
-dependencies {
-    constraints {
-        // Define dependency versions as constraints
-        implementation 'org.apache.commons:commons-text:1.9'
+eclipse {
+    project {
+        name = 'training-java-object-orented'
     }
-
-    // Use JUnit Jupiter API for testing.
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-
-    // Use JUnit Jupiter Engine for testing.
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-
-    compile 'org.projectlombok:lombok:1.18.16'
-    annotationProcessor 'org.projectlombok:lombok:1.18.16'
 }
 
-test {
-    useJUnitPlatform()
-}
+dependencies {}

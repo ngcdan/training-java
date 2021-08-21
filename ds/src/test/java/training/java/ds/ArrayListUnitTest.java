@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class ArrayListUnitTest {
 
   @Test
-  public void testArrayList() throws Exception {
+  public void testArrayListUnitTest() throws Exception {
 
     ArrayList<String> arrayList = new ArrayList<String>();
     arrayList.add("One");

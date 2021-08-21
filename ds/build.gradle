@@ -1,38 +1,9 @@
-plugins {
-    // Apply the java Plugin to add support for Java.
-    id 'java'
-    id 'eclipse'
-    id 'maven'
-}
+archivesBaseName = "training-java-ds"
 
-version '0.1.0'
-
-sourceCompatibility = 11
-targetCompatibility = 11
-
-repositories {
-    mavenLocal()
-    mavenCentral()
-}
-
-dependencies {
-    constraints {
-        // Define dependency versions as constraints
-        implementation 'org.apache.commons:commons-text:1.9'
+eclipse {
+    project {
+        name = 'training-java-ds'
     }
-
-    // Use JUnit Jupiter API for testing.
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-
-    // Use JUnit Jupiter Engine for testing.
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-
-    compile 'org.projectlombok:lombok:1.18.16'
-    annotationProcessor 'org.projectlombok:lombok:1.18.16'
 }
 
-test {
-    // Use junit platform for unit tests.
-    useJUnitPlatform()
-
-}
+dependencies {}
