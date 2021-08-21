@@ -1,5 +1,9 @@
-plugins {
-    id 'training.java.java-common-conventions'
+archivesBaseName = "training-java-ds"
+
+eclipse {
+    project {
+        name = 'training-java-ds'
+    }
 }
 
-version '0.1.0'
+dependencies {}

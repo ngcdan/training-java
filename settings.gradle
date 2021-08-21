@@ -8,6 +8,19 @@
  */
 
 rootProject.name = 'training-java'
-include('app', 'design.pattern', 'ds', 'reflection')
-include 'object.orented'
+include ':training-java-app'
+project(':training-java-app').projectDir = new File('app')
+
+include ':training-java-design-pattern'
+project(':training-java-design-pattern').projectDir = new File('design-pattern')
+
+include ':training-java-ds'
+project(':training-java-ds').projectDir = new File('ds')
+
+include ':training-java-reflection'
+project(':training-java-reflection').projectDir = new File('reflection')
+
+include ':training-java-object-orented'
+project(':training-java-object-orented').projectDir = new File('object-orented')
+
 

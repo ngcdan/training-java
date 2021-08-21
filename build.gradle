@@ -1,0 +1,83 @@
+allprojects {
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'maven'
+    apply plugin: 'maven-publish'
+
+    project.ext {
+        slf4jVersion             = '1.7.30'
+    }
+
+    version = '1.0'
+    sourceCompatibility = 11
+    configurations.compile.transitive = true
+    compileJava.options.encoding = 'UTF-8'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "https://repo.spring.io/plugins-release" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+
+    dependencies {
+        constraints {
+            // Define dependency versions as constraints
+            implementation 'org.apache.commons:commons-text:1.9'
+        }
+
+        implementation 'org.apache.commons:commons-text'
+
+        compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
+        compile group: 'org.slf4j', name: 'slf4j-ext', version: slf4jVersion
+
+
+        // Use JUnit Jupiter API for testing.
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+
+        // Use JUnit Jupiter Engine for testing.
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+
+        compile 'org.projectlombok:lombok:1.18.16'
+        annotationProcessor 'org.projectlombok:lombok:1.18.16'
+        compile 'com.h2database:h2:1.4.200'
+    }
+
+    test {
+        forkEvery = 1
+        ignoreFailures = true
+        testLogging.showStandardStreams = true
+
+        useJUnitPlatform()
+        filter {
+            includeTestsMatching "*UnitTest"
+        }
+    }
+
+    task testJar(type: Jar) {
+        classifier = 'tests'
+        from sourceSets.test.output
+    }
+
+    configurations {
+        tests
+        published.extendsFrom tests, archives
+    }
+
+
+    install {
+        configuration = configurations.published
+    }
+
+    artifacts {
+        tests testJar
+    }
+
+    sourceSets {
+        main {
+        }
+    }
+}

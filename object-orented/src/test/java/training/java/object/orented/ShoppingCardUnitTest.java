@@ -8,7 +8,7 @@ import training.java.object.orented.domain.ShoppingCard;
 public class ShoppingCardUnitTest {
   
   @Test
-  public void Demo() {
+  public void shoppingCardUnitTest() throws Exception {
     ShoppingCard shoppingCard = new ShoppingCard();
     Product toothbrush = Catalogue.getProduct("Toothbrush");
     Product toothpaste = Catalogue.getProduct("Toothpaste");
