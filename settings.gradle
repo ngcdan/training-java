@@ -24,3 +24,4 @@ include ':training-java-object-orented'
 project(':training-java-object-orented').projectDir = new File('object-orented')
 
 
+
