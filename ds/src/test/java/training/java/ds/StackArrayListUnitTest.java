@@ -16,6 +16,26 @@ public class StackArrayListUnitTest {
     stack.push("Four");
     stack.push("Five");
     
+    // Exception here
+    //    stack.clear();
+    
+    assertEquals("Five", stack.pop());
+    assertEquals("Four", stack.pop());
+    assertEquals("Three", stack.pop());
+    assertEquals("Two", stack.pop());
+    assertEquals("One", stack.pop());
+  }
+  
+  
+  @Test
+  public void stackArrayList1UnitTest() {
+    Stack<String> stack = new Stack<String>();
+    stack.push("One");
+    stack.push("Two");
+    stack.push("Three");
+    stack.push("Four");
+    stack.push("Five");
+    
     assertEquals("Five", stack.pop());
     assertEquals("Four", stack.pop());
     assertEquals("Three", stack.pop());
