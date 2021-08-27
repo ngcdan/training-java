@@ -1,6 +1,6 @@
 package training.java.ds.stack;
 
-public class StackArray<T> {
+public class SimpleStack<T> implements Stack<T> {
   private int stackPointer = 0;
   private T[] contents = (T[]) new Object[1000];
   

@@ -1,7 +1,8 @@
 package training.java.ds;
 
 import org.junit.jupiter.api.Test;
-import training.java.ds.stack.Stack;
+import training.java.ds.stack.MonitorableStack;
+import training.java.ds.stack.SimpleStack;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -9,15 +10,12 @@ public class StackArrayListUnitTest {
   
   @Test
   public void stackArrayListUnitTest() {
-    Stack<String> stack = new Stack<String>();
+    SimpleStack<String> stack = new SimpleStack<>();
     stack.push("One");
     stack.push("Two");
     stack.push("Three");
     stack.push("Four");
     stack.push("Five");
-    
-    // Exception here
-    //    stack.clear();
     
     assertEquals("Five", stack.pop());
     assertEquals("Four", stack.pop());
@@ -29,12 +27,8 @@ public class StackArrayListUnitTest {
   
   @Test
   public void stackArrayList1UnitTest() {
-    Stack<String> stack = new Stack<String>();
-    stack.push("One");
-    stack.push("Two");
-    stack.push("Three");
-    stack.push("Four");
-    stack.push("Five");
+    MonitorableStack<String> stack = new MonitorableStack<>();
+    stack.pushMany("One", "Two", "Three", "Four", "Five");
     
     assertEquals("Five", stack.pop());
     assertEquals("Four", stack.pop());
