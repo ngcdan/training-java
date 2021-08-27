@@ -1,28 +1,22 @@
-package training.java.object.orented.design;
-
-import java.util.Currency;
+package training.java.object.orented.design1;
 
 interface TimeSheet{}
 interface Invoice{};
-class Money1 {
-  public Money1(double val, Currency currency) {}
-}
-
 interface Payable {
   void pay();
 }
 
-abstract class Worker implements Payable {
+abstract class Worker {
   private String name;
   public Worker(String name) {
     this.name = name;
   }
   
   public void pay() {
-    Money1 due = getAmountDue();
+    Money due = getAmountDue();
   }
   
-  abstract protected Money1 getAmountDue();
+  abstract protected Money getAmountDue();
 }
 
 public class Employee extends Worker {
@@ -31,19 +25,19 @@ public class Employee extends Worker {
   public Employee(String name) {super(name);}
   
   @Override
-  protected Money1 getAmountDue() {
+  protected Money getAmountDue() {
     //...
-    return new Money1(12.34, Currency.getInstance("USD"));
+    return new Money(12.34, Currency.USD);
   }
   
   public void attachTimesheet(TimeSheet i) {}
 }
 
 class Contractor extends Worker {
- public Contractor(String name) {super(name);}
+  public Contractor(String name) {super(name);}
   
   @Override
-  protected Money1 getAmountDue() {
+  protected Money getAmountDue() {
     return null;
   }
   

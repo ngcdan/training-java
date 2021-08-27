@@ -1,4 +1,4 @@
-package training.java.object.orented.design;
+package training.java.object.orented.design1;
 
 public class Money {
   private double value;

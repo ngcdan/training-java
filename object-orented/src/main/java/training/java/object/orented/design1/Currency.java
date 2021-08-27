@@ -1,4 +1,4 @@
-package training.java.object.orented.design;
+package training.java.object.orented.design1;
 
 public enum Currency {
   USD, EURO;

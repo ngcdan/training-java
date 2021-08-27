@@ -1,8 +1,8 @@
 package training.java.object.orented;
 
 import org.junit.jupiter.api.Test;
-import training.java.object.orented.design.Currency;
-import training.java.object.orented.design.Money;
+import training.java.object.orented.design1.Currency;
+import training.java.object.orented.design1.Money;
 
 public class DesignUnitTest {
   public static void dispenseFunds(Money money) {/*...*/};
