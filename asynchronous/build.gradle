@@ -1,0 +1,9 @@
+archivesBaseName = "training-java-asynchronous"
+
+eclipse {
+    project {
+        name = 'training-java-asynchronous'
+    }
+}
+
+dependencies {}

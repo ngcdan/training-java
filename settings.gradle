@@ -22,5 +22,10 @@ project(':training-java-reflection').projectDir = new File('reflection')
 
 include ':training-java-object-orented'
 project(':training-java-object-orented').projectDir = new File('object-orented')
-include 'algorithm'
+
+include ':training-java-algorithm'
+project(':training-java-algorithm').projectDir = new File('algorithm')
+
+include 'training-java-asynchronous'
+project(':training-java-asynchronous').projectDir = new File('asynchronous')
 
