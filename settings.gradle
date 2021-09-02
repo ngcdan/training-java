@@ -8,8 +8,8 @@
  */
 
 rootProject.name = 'training-java'
-include ':training-java-app'
-project(':training-java-app').projectDir = new File('app')
+include ':training-java-app-server'
+project(':training-java-app-server').projectDir = new File('app/server')
 
 include ':training-java-design-pattern'
 project(':training-java-design-pattern').projectDir = new File('design-pattern')
