@@ -15,8 +15,8 @@ project(':training-java-app-server').projectDir = new File('app/server')
 include ':training-java-design-pattern'
 project(':training-java-design-pattern').projectDir = new File('module/design-pattern')
 
-include ':training-java-ds'
-project(':training-java-ds').projectDir = new File('module/ds')
+include ':training-java-data-structure'
+project(':training-java-data-structure').projectDir = new File('module/data-structure')
 
 include ':training-java-reflection'
 project(':training-java-reflection').projectDir = new File('module/reflection')
