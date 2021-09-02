@@ -1,0 +1,7 @@
+archivesBaseName = "training-java-algorithm"
+
+eclipse {
+    project {
+        name = 'training-java-algorithm'
+    }
+}

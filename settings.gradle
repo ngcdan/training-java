@@ -22,6 +22,5 @@ project(':training-java-reflection').projectDir = new File('reflection')
 
 include ':training-java-object-orented'
 project(':training-java-object-orented').projectDir = new File('object-orented')
-
-
+include 'algorithm'
 
