@@ -1,5 +1,6 @@
-import org.gradle.api.tasks.testing.logging.TestExceptionFormat
-import org.gradle.api.tasks.testing.logging.TestLogEvent
+plugins {
+    id 'com.adarshr.test-logger' version '3.0.0'
+}
 
 allprojects {
 }
@@ -10,6 +11,7 @@ subprojects {
     apply plugin: 'idea'
     apply plugin: 'maven'
     apply plugin: 'maven-publish'
+    apply plugin: 'com.adarshr.test-logger'
 
     project.ext {
         slf4jVersion             = '1.7.30'
@@ -45,16 +47,35 @@ subprojects {
     }
 
     test {
+        /*
         testLogging {
             events TestLogEvent.FAILED,
                     TestLogEvent.PASSED,
                     TestLogEvent.SKIPPED
         }
+         */
+
+        testlogger {
+            theme 'standard'
+            showExceptions true
+            showStackTraces true
+            showFullStackTraces false
+            showCauses true
+            slowThreshold 2000
+            showSummary true
+            showSimpleNames false
+            showPassed true
+            showSkipped true
+            showFailed true
+            showStandardStreams false
+            showPassedStandardStreams true
+            showSkippedStandardStreams true
+            showFailedStandardStreams true
+            logLevel 'lifecycle'
+        }
+
         forkEvery = 1
         ignoreFailures = true
-        testLogging.showStandardStreams = true
-
-
         useJUnitPlatform()
         filter {
             includeTestsMatching "*UnitTest"
@@ -81,7 +102,6 @@ subprojects {
     }
 
     sourceSets {
-        main {
-        }
+        main {}
     }
 }

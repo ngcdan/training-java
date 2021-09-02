@@ -7,7 +7,7 @@ import training.java.reflection.entity.Person;
 import training.java.reflection.orm.EntityManager;
 import training.java.reflection.orm.ManagedEntityManager;
 
-public class ObjectRelationalUnitTest {
+public class ObjectRelationalTest {
 
   @Test
   public void writingObject() throws Exception {
