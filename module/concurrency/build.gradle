@@ -1,0 +1,9 @@
+archivesBaseName = "training-java-concurrency"
+
+eclipse {
+    project {
+        name = 'training-java-concurrency'
+    }
+}
+
+dependencies {}
