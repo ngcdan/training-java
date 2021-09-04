@@ -30,6 +30,3 @@ project(':training-java-algorithm').projectDir = new File('module/algorithm')
 include 'training-java-asynchronous'
 project(':training-java-asynchronous').projectDir = new File('module/asynchronous')
 
-include 'training-java-concurrency'
-project(':training-java-concurrency').projectDir = new File('module/concurrency')
-

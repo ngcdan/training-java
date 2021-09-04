@@ -79,32 +79,12 @@ subprojects {
 
         forkEvery = 1
         ignoreFailures = true
-        useJUnitPlatform()
-        filter {
-            includeTestsMatching "*UnitTest"
+
+        useJUnitPlatform {
+            excludeTags "tofix"
+            filter {
+                includeTestsMatching "*UnitTest"
+            }
         }
-    }
-
-    task testJar(type: Jar) {
-        classifier = 'tests'
-        from sourceSets.test.output
-    }
-
-    configurations {
-        tests
-        published.extendsFrom tests, archives
-    }
-
-
-    install {
-        configuration = configurations.published
-    }
-
-    artifacts {
-        tests testJar
-    }
-
-    sourceSets {
-        main {}
     }
 }

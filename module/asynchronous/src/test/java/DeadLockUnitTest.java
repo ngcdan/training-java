@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 public class DeadLockUnitTest {
@@ -27,6 +28,7 @@ public class DeadLockUnitTest {
   }
   
   @Test
+  @Tag("tofix")
   public void deadLockUnitTest() throws InterruptedException {
     A a = new A();
     Runnable r1 = a::a;
