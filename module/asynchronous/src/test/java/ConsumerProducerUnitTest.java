@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 public class ConsumerProducerUnitTest {
@@ -48,7 +47,6 @@ public class ConsumerProducerUnitTest {
   
   
   @Test
-  @Tag("integration")
   public void consumerProducerUnitTest() throws InterruptedException {
     buffer = new int[50];
     count = 0;

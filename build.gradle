@@ -22,15 +22,15 @@ subprojects {
     }
 
     version = '1.0'
-    sourceCompatibility = 11
+    sourceCompatibility = 15
     configurations.compile.transitive = true
     compileJava.options.encoding = 'UTF-8'
 
     repositories {
         mavenLocal()
         mavenCentral()
-        maven { url "https://repo.spring.io/plugins-release" }
-        maven { url "https://repo.spring.io/milestone" }
+//        maven { url "https://repo.spring.io/plugins-release" }
+//        maven { url "https://repo.spring.io/milestone" }
     }
 
     dependencies {
