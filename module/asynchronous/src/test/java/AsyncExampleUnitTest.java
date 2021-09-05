@@ -250,4 +250,126 @@ public class AsyncExampleUnitTest {
     
     sleep(6_000);
   }
+  
+  @Test
+  public void syncExceptionExample1UnitTest() {
+    Supplier<List<Long>> supplierIDs = () -> {
+      sleep(200);
+      throw new IllegalStateException("No data");
+      //      return Arrays.asList(1L, 2L, 3L);
+    };
+    
+    Function<List<Long>, List<User>> fetchUsers = ids -> {
+      sleep(300);
+      return ids.stream().map(User::new).collect(Collectors.toList());
+    };
+    
+    Consumer<List<User>> displayer = users -> users.forEach(System.out::println);
+    
+    CompletableFuture<List<Long>> supply = CompletableFuture.supplyAsync(supplierIDs);
+    CompletableFuture<List<User>> fetch = supply.thenApply(fetchUsers);
+    CompletableFuture<Void> display = fetch.thenAccept(displayer);
+    
+    sleep(1_000);
+    
+    System.out.println("Supplier: done = " + supply.isDone() + " Exception = " + supply.isCompletedExceptionally());
+    System.out.println("Fetch: done = " + fetch.isDone() + " Exception = " + fetch.isCompletedExceptionally());
+    System.out.println("Display: done = " + display.isDone() + " Exception = " + display.isCompletedExceptionally());
+  }
+  
+  @Test
+  public void syncExceptionExample2UnitTest() {
+    Supplier<List<Long>> supplierIDs = () -> {
+      sleep(200);
+      throw new IllegalStateException("No data");
+      //      return Arrays.asList(1L, 2L, 3L);
+    };
+    
+    Function<List<Long>, List<User>> fetchUsers = ids -> {
+      sleep(300);
+      return ids.stream().map(User::new).collect(Collectors.toList());
+    };
+    
+    Consumer<List<User>> displayer = users -> users.forEach(System.out::println);
+    
+    CompletableFuture<List<Long>> supply = CompletableFuture.supplyAsync(supplierIDs);
+    CompletableFuture<List<Long>> exceptionally = supply.exceptionally((exception) -> List.of());
+    CompletableFuture<List<User>> fetch = exceptionally.thenApply(fetchUsers);
+    CompletableFuture<Void> display = fetch.thenAccept(displayer);
+    
+    //    supply.join();
+    
+    sleep(1_000);
+    
+    System.out.println("Supplier: done = " + supply.isDone() + " Exception = " + supply.isCompletedExceptionally());
+    System.out.println("Fetch: done = " + fetch.isDone() + " Exception = " + fetch.isCompletedExceptionally());
+    System.out.println("Display: done = " + display.isDone() + " Exception = " + display.isCompletedExceptionally());;
+  }
+  
+  @Test
+  public void syncExceptionExample3UnitTest() {
+    Supplier<List<Long>> supplierIDs = () -> {
+      sleep(200);
+      throw new IllegalStateException("No data");
+      //      return Arrays.asList(1L, 2L, 3L);
+    };
+    
+    Function<List<Long>, List<User>> fetchUsers = ids -> {
+      sleep(300);
+      return ids.stream().map(User::new).collect(Collectors.toList());
+    };
+    
+    Consumer<List<User>> displayer = users -> users.forEach(System.out::println);
+    
+    CompletableFuture<List<Long>> supply = CompletableFuture.supplyAsync(supplierIDs);
+    CompletableFuture<List<Long>> exceptionally = supply.whenComplete(
+      (ids, e) -> {
+        if(e != null) e.printStackTrace();
+      }
+    );
+    CompletableFuture<List<User>> fetch = exceptionally.thenApply(fetchUsers);
+    CompletableFuture<Void> display = fetch.thenAccept(displayer);
+    
+    sleep(1_000);
+    
+    System.out.println("Supplier: done = " + supply.isDone() + " Exception = " + supply.isCompletedExceptionally());
+    System.out.println("Fetch: done = " + fetch.isDone() + " Exception = " + fetch.isCompletedExceptionally());
+    System.out.println("Display: done = " + display.isDone() + " Exception = " + display.isCompletedExceptionally());
+  }
+  
+  @Test
+  public void syncExceptionExample4UnitTest() {
+    Supplier<List<Long>> supplierIDs = () -> {
+      sleep(200);
+      throw new IllegalStateException("No data");
+      //      return Arrays.asList(1L, 2L, 3L);
+    };
+    
+    Function<List<Long>, List<User>> fetchUsers = ids -> {
+      sleep(300);
+      return ids.stream().map(User::new).collect(Collectors.toList());
+    };
+    
+    Consumer<List<User>> displayer = users -> users.forEach(System.out::println);
+    
+    CompletableFuture<List<Long>> supply = CompletableFuture.supplyAsync(supplierIDs);
+    CompletableFuture<List<Long>> exceptionally = supply.handle(
+      (ids, e) -> {
+        if(e != null) {
+          e.printStackTrace();
+          return List.of();
+        } else {
+          return ids;
+        }
+      });
+    
+    CompletableFuture<List<User>> fetch = exceptionally.thenApply(fetchUsers);
+    CompletableFuture<Void> display = fetch.thenAccept(displayer);
+    
+    sleep(1_000);
+    
+    System.out.println("Supplier: done = " + supply.isDone() + " Exception = " + supply.isCompletedExceptionally());
+    System.out.println("Fetch: done = " + fetch.isDone() + " Exception = " + fetch.isCompletedExceptionally());
+    System.out.println("Display: done = " + display.isDone() + " Exception = " + display.isCompletedExceptionally());
+  }
 }
