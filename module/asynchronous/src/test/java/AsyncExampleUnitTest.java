@@ -372,4 +372,36 @@ public class AsyncExampleUnitTest {
     System.out.println("Fetch: done = " + fetch.isDone() + " Exception = " + fetch.isCompletedExceptionally());
     System.out.println("Display: done = " + display.isDone() + " Exception = " + display.isCompletedExceptionally());
   }
+  
+  @Test
+  public void asyncTriggerExampleUnitTest() {
+    ExecutorService executorService = Executors.newSingleThreadExecutor();
+    
+    Supplier<List<Long>> supplierIDs = () -> {
+      sleep(200);
+      return Arrays.asList(1L, 2L, 3L);
+    };
+    
+    Function<List<Long>, List<User>> fetchUsers = ids -> {
+      sleep(250);
+      return ids.stream().map(User::new).collect(Collectors.toList());
+    };
+    
+    Consumer<List<User>> displayer = users -> {
+      System.out.println("In thread " + Thread.currentThread().getName());
+      users.forEach(System.out::println);
+    };
+    
+    CompletableFuture<Void> cf = new CompletableFuture<>();
+    
+    CompletableFuture<List<Long>> supply = cf.thenApply(nil -> supplierIDs.get());
+    CompletableFuture<List<User>> fetch = supply.thenApply(fetchUsers);
+    CompletableFuture<Void> display = fetch.thenAccept(displayer);
+    
+    //    cf.complete(null);
+    cf.completeAsync(() -> null, executorService);
+    
+    sleep(1_000);
+    
+  }
 }
