@@ -1,7 +1,6 @@
 import org.junit.jupiter.api.Test;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 public class ExecutorPatternUnitTest {
   
@@ -19,8 +18,8 @@ public class ExecutorPatternUnitTest {
   }
   
   @Test
-  public void singleThreadWithExecutorAndRunnablesUnitTest() {
-//    ExecutorService service = Executors.newSingleThreadExecutor();
+  public void threadWithExecutorAndRunnablesUnitTest() {
+    //    ExecutorService service = Executors.newSingleThreadExecutor();
     ExecutorService service = Executors.newFixedThreadPool(4);
     Runnable task1 = () -> System.out.println("Executed task1 " + "[" + Thread.currentThread().getName() + "]");
     
@@ -32,5 +31,26 @@ public class ExecutorPatternUnitTest {
     }
     
     service.shutdown();
+  }
+  
+  @Test
+  public void threadWithCallableAndFutureUnitTest() throws ExecutionException, InterruptedException, TimeoutException {
+    ExecutorService service = Executors.newFixedThreadPool(4);
+    
+    Callable<String> task = () -> {
+      Thread.sleep(500);
+      return "Executed task " + "[" + Thread.currentThread().getName() + "]";
+    };
+    
+    try {
+      for(int i = 0; i < 10; i++) {
+        Future<String> future = service.submit(task);
+        //System.out.println("I get " + future.get(200, TimeUnit.MILLISECONDS));
+        System.out.println("I get " + future.get());
+      }
+    } finally {
+      service.shutdown();
+    }
+    
   }
 }
