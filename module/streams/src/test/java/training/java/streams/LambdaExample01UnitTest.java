@@ -2,6 +2,10 @@ package training.java.streams;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -30,6 +34,73 @@ public class LambdaExample01UnitTest {
     
     for(Product product: products) {
       System.out.println(product);
+    }
+  }
+  
+  @Test
+  public void countProductExampleUnitTest() {
+    List<Product> products = ExampleData.getProducts();
+    BigDecimal priceLimit = new BigDecimal("5.00");
+    
+    int numberOfCheapProducts = 0;
+    
+    for (Product product : products) {
+      if (product.getPrice().compareTo(priceLimit) < 0) {
+        numberOfCheapProducts++;
+      }
+    }
+    
+    // Because local variables are effectively final, you cannot modify them inside a lambda expression.
+    //        products.forEach(product -> {
+    //            if (product.getPrice().compareTo(priceLimit) < 0) {
+    //                numberOfCheapProducts++; // Error: Variable must be effectively final
+    //            }
+    //        });
+    
+    System.out.println("There are " + numberOfCheapProducts + " cheap products");
+  }
+  
+  @Test
+  public void printCheapProductExampleUnitTest() {
+    List<Product> products = ExampleData.getProducts();
+    
+    BigDecimal priceLimit = new BigDecimal("5.00");
+    
+    List<Product> cheapProducts = new ArrayList<>();
+    
+    // BAD PRACTICE! Modifying cheapProducts inside the body of the lambda expression.
+    // In general, avoid side effects such as modifying objects from captured variables in lambda expressions.
+    products.forEach(product -> {
+      if (product.getPrice().compareTo(priceLimit) < 0) {
+        cheapProducts.add(product);
+      }
+    });
+    
+    // Print the cheap products.
+    cheapProducts.forEach(System.out::println);
+  }
+  
+  @Test
+  public void writingProductsUnitTest() {
+    List<Product> products = ExampleData.getProducts();
+    
+    try (FileWriter writer = new FileWriter("products.txt")) {
+      for (Product product : products) {
+        writer.write(product.toString() + "\n");
+      }
+      
+      // the lambda expression is not allowed to throw any checked exceptions.
+      /*
+      products.forEach(product -> {
+        try {
+          writer.write(product.toString() + "\n");
+        } catch (IOException e) {
+          throw new RuntimeException(e);
+        }
+      });
+       */
+    } catch (IOException | RuntimeException e) {
+      System.err.println("An exception occurred: " + e.getMessage());
     }
   }
 }

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class LambdaExample012UnitTest {
+public class LambdaExample02UnitTest {
   
   // Print the products that cost less than the price limit.
   static void printProducts(List<Product> products, BigDecimal priceLimit) {
