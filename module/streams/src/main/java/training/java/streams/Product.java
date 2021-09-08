@@ -17,6 +17,7 @@ public class Product {
     this.price = price;
   }
   
+  //%[argument_index$][flags][width][.precision]conversion
   @Override
   public String toString() {
     return String.format("%-10s %-16s $ %6.2f", category, name, price);

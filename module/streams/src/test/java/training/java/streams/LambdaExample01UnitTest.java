@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Comparator;
 import java.util.List;
 
-public class LambdaExampleUnitTest {
+public class LambdaExample01UnitTest {
   
   @Test
   public void sortProductExampleUnitTest() {
