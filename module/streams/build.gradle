@@ -1,0 +1,7 @@
+archivesBaseName = "training-java-streams"
+
+eclipse {
+    project {
+        name = 'training-java-streams'
+    }
+}
