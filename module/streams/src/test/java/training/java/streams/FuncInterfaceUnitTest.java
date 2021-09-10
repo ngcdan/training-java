@@ -91,13 +91,13 @@ public class FuncInterfaceUnitTest {
   @Test
   public void example4UnitTest() {
     List<Product> products = ExampleData.getProducts();
-  
+    
     BigDecimal priceLimit = new BigDecimal("2.00");
-  
+    
     // Two simple predicates that can be combined using the functional composition methods in interface Predicate.
     Predicate<Product> isFood = product -> product.getCategory() == Category.FOOD;
     Predicate<Product> isCheap = product -> product.getPrice().compareTo(priceLimit) < 0;
-  
+    
     findProduct(products, isFood.and(isCheap)) // Combining the predicates with and(...)
       .map(product -> String.format("%s for $ %.2f", product.getName(), product.getPrice()))
       .ifPresentOrElse(
