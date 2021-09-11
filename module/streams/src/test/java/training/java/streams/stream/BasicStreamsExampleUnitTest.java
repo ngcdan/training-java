@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class BasicStreamsExample {
+public class BasicStreamsExampleUnitTest {
   
   @Test
   public void basicStreamUnitTest() {
