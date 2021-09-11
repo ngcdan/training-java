@@ -8,6 +8,8 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class FuncInterfaceUnitTest {
+  static final List<Product> products = ExampleData.getProducts();
+  
   // Go through a list of products, and return the first product for which the predicate returns true.
   static Optional<Product> findProduct(List<Product> products, Predicate<Product> predicate) {
     for (Product product : products) {
@@ -18,18 +20,23 @@ public class FuncInterfaceUnitTest {
     return Optional.empty();
   }
   
+  /**
+   * @param products List of products to filter.
+   * @param f        Determines which products should be in the result.
+   * @return A filtered list of products.
+   */
+  
+  public List<Product> filterProducts(List<Product> products, Predicate<Product> f) {
+    List<Product> result = new ArrayList<>();
+    for(Product product: products) {
+      if(f.test(product)) result.add(product);
+    }
+    return result;
+  }
+  
   @Test
   public void findProductsUnitTest() {
-    List<Product> products = ExampleData.getProducts();
-    
     String name = "Spaghetti";
-    
-    // A combination of functional interfaces implemented by lambda expressions and method references is used here:
-    // - findProduct() takes a Predicate<Product> to find the product with the specified name
-    // - map() takes a Function<Product, BigDecimal> to get the price of the product
-    // - ifPresentOrElse() takes a Consumer<Product> and a Runnable and calls one of them, depending on whether
-    //      the Optional contains a value or is empty
-    
     findProduct(products, product -> product.getName().equals(name))
       .map(Product::getPrice)
       .ifPresentOrElse(
@@ -38,18 +45,13 @@ public class FuncInterfaceUnitTest {
   }
   
   @Test
-  public void example2UnitTest() {
-    List<Product> products = ExampleData.getProducts();
-    
+  public void productByCategoryUnitTest() {
     Map<Category, List<Product>> productsByCategory = new HashMap<>();
     
     for (Product product : products) {
       Category category = product.getCategory();
-      
       // Check if the map already has a List for this category; if not, add one.
-      if (!productsByCategory.containsKey(category)) {
-        productsByCategory.put(category, new ArrayList<>());
-      }
+      if (!productsByCategory.containsKey(category)) productsByCategory.put(category, new ArrayList<>());
       
       productsByCategory.get(category).add(product);
     }
@@ -62,7 +64,6 @@ public class FuncInterfaceUnitTest {
       productsByCategory.computeIfAbsent(category, c -> new ArrayList<>()).add(product);
     }
     
-    // Map.forEach() takes a BiConsumer (a Consumer which takes two parameters); the key and value of each entry.
     productsByCategory.forEach((category, ps) -> {
       System.out.println("Category: " + category);
       ps.forEach(product -> System.out.println("- " + product.getName()));
@@ -70,9 +71,7 @@ public class FuncInterfaceUnitTest {
   }
   
   @Test
-  public void example3UnitTest() {
-    List<Product> products = ExampleData.getProducts();
-    
+  public void composeToFunctionForMappingProductUnitTest() {
     String name = "Spaghetti";
     
     Function<Product, BigDecimal> productToPrice = Product::getPrice;
@@ -89,9 +88,7 @@ public class FuncInterfaceUnitTest {
   }
   
   @Test
-  public void example4UnitTest() {
-    List<Product> products = ExampleData.getProducts();
-    
+  public void composeTwoFilterProductUnitTest() {
     BigDecimal priceLimit = new BigDecimal("2.00");
     
     // Two simple predicates that can be combined using the functional composition methods in interface Predicate.
