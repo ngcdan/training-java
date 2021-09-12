@@ -12,7 +12,7 @@ interface Payable {
 
 class Employee extends  Payable.Implementation {}
 
-class Contractor implements Payable{
+class Contractor implements Payable {
   private Payable delegate = new Payable.Implementation();
   public void pay() { delegate.pay();}
 }

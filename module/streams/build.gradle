@@ -5,3 +5,7 @@ eclipse {
         name = 'training-java-streams'
     }
 }
+
+dependencies {
+    compile project(':training-java-object-orented')
+}

@@ -1,6 +1,9 @@
 package training.java.streams;
 
 import org.junit.jupiter.api.Test;
+import training.java.object.orented.domain.Category;
+import training.java.object.orented.domain.ExampleData;
+import training.java.object.orented.domain.Product;
 
 import java.math.BigDecimal;
 import java.util.*;

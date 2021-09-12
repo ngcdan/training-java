@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCard {
-  private List<Product> products = new ArrayList<>();
+  private List<ProductDep> products = new ArrayList<>();
   
-  public void addProduct(Product product) {
+  public void addProduct(ProductDep product) {
     this.products.add(product);
   }
   
   public int getTotalCost() {
-    return products.stream().mapToInt(Product::getPrice).sum();
+    return products.stream().mapToInt(ProductDep::getPrice).sum();
   }
   
   @Override

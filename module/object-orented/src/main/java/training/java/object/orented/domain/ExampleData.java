@@ -1,11 +1,11 @@
-package training.java.streams;
+package training.java.object.orented.domain;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static training.java.streams.Category.*;
+import static training.java.object.orented.domain.Category.*;
 
 public class ExampleData {
   private static final List<Product> PRODUCTS = Arrays.asList(
