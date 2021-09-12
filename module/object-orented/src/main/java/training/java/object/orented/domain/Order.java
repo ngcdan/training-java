@@ -11,4 +11,12 @@ public class Order {
     this.payment = payment;
   }
   
+  @Override
+  public String toString() {
+    return "Order{" +
+      "customer=" + customer +
+      ", card=" + card +
+      ", payment=" + payment +
+      '}';
+  }
 }

@@ -15,4 +15,11 @@ public class ShoppingCard {
     return lineItems.stream()
       .reduce(BigDecimal.ZERO, (result, lineItem) -> result.add(lineItem.getPrice()), BigDecimal::add);
   }
+  
+  @Override
+  public String toString() {
+    return "ShoppingCard{" +
+      "lineItems=" + lineItems +
+      '}';
+  }
 }

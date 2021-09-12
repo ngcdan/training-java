@@ -15,4 +15,12 @@ public class Customer {
     Optional<Payment> payment = creditCard.mkPayment(card.getTotalCost());
     return payment.map(value -> new Order(this, card, value));
   }
+  
+  @Override
+  public String toString() {
+    return "Customer{" +
+      "name='" + name + '\'' +
+      ", creditCard=" + creditCard +
+      '}';
+  }
 }
