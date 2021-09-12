@@ -5,21 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCard {
-  private List<Product> products = new ArrayList<>();
+  private List<LineItem> lineItems = new ArrayList<>();
   
-  public void addProduct(Product product) {
-    this.products.add(product);
+  public void addLineItem(LineItem lineItem) {
+    this.lineItems.add(lineItem);
   }
   
   public BigDecimal getTotalCost() {
-    return products.stream()
-      .reduce(BigDecimal.ZERO, (result, product) -> result.add(product.getPrice()), BigDecimal::add);
-  }
-  
-  @Override
-  public String toString() {
-    return "ShoppingCard{" +
-      "products=" + products +
-      '}';
+    return lineItems.stream()
+      .reduce(BigDecimal.ZERO, (result, lineItem) -> result.add(lineItem.getPrice()), BigDecimal::add);
   }
 }
