@@ -14,9 +14,9 @@ public class Order {
   @Override
   public String toString() {
     return "Order{" +
-      "customer=" + customer +
-      ", card=" + card +
-      ", payment=" + payment +
+      "\ncustomer=" + customer +
+      ", \ncard=" + card +
+      ", \npayment=" + payment +
       '}';
   }
 }

@@ -18,4 +18,11 @@ public class CreditCard {
       return Optional.empty();
     }
   }
+  
+  @Override
+  public String toString() {
+    return "CreditCard{" +
+      "\ncardNumber=" + cardNumber +
+      '}';
+  }
 }

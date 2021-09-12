@@ -14,4 +14,12 @@ public class LineItem {
   public BigDecimal getPrice() {
     return product.getPrice().multiply(BigDecimal.valueOf(quantity));
   }
+  
+  @Override
+  public String toString() {
+    return "\nLineItem{" +
+      "product=" + product +
+      ", quantity=" + quantity +
+      '}';
+  }
 }

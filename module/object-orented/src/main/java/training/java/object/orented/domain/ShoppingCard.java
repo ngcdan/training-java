@@ -19,7 +19,7 @@ public class ShoppingCard {
   @Override
   public String toString() {
     return "ShoppingCard{" +
-      "lineItems=" + lineItems +
+      "\nlineItems=" + lineItems +
       '}';
   }
 }

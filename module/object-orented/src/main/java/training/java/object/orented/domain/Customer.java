@@ -19,8 +19,8 @@ public class Customer {
   @Override
   public String toString() {
     return "Customer{" +
-      "name='" + name + '\'' +
-      ", creditCard=" + creditCard +
+      "\nname='" + name + '\'' +
+      ", \ncreditCard=" + creditCard +
       '}';
   }
 }
