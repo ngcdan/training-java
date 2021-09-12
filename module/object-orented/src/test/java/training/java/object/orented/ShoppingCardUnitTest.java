@@ -2,16 +2,17 @@ package training.java.object.orented;
 
 import org.junit.jupiter.api.Test;
 import training.java.object.orented.domain.Catalogue;
-import training.java.object.orented.domain.ProductDep;
+import training.java.object.orented.domain.Category;
+import training.java.object.orented.domain.Product;
 import training.java.object.orented.domain.ShoppingCard;
 
 public class ShoppingCardUnitTest {
   
   @Test
-  public void shoppingCardUnitTest() throws Exception {
+  public void shoppingCardUnitTest() {
     ShoppingCard shoppingCard = new ShoppingCard();
-    ProductDep toothbrush = Catalogue.getProduct("Toothbrush");
-    ProductDep toothpaste = Catalogue.getProduct("Toothpaste");
+    Product toothbrush = Catalogue.getProduct(Category.CLEANING, "Detergent");
+    Product toothpaste = Catalogue.getProduct(Category.CLEANING, "Scourer");
     shoppingCard.addProduct(toothbrush);
     shoppingCard.addProduct(toothpaste);
     System.out.println(shoppingCard);

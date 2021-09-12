@@ -6,5 +6,4 @@ public class CreditCard {
   public CreditCard(long cardNumber) {
     this.cardNumber = cardNumber;
   }
-  
 }

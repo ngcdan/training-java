@@ -1,17 +1,19 @@
 package training.java.object.orented.domain;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCard {
-  private List<ProductDep> products = new ArrayList<>();
+  private List<Product> products = new ArrayList<>();
   
-  public void addProduct(ProductDep product) {
+  public void addProduct(Product product) {
     this.products.add(product);
   }
   
-  public int getTotalCost() {
-    return products.stream().mapToInt(ProductDep::getPrice).sum();
+  public BigDecimal getTotalCost() {
+    return products.stream()
+      .reduce(BigDecimal.ZERO, (result, product) -> result.add(product.getPrice()), BigDecimal::add);
   }
   
   @Override

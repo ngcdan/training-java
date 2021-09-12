@@ -1,18 +1,25 @@
 package training.java.object.orented.domain;
 
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class Catalogue {
-  private static Map<String, ProductDep> productMap = new HashMap<>();
+  private static Map<Category, List<Product>> productMap =
+    ExampleData.getProducts().stream().collect(Collectors.groupingBy(Product::getCategory));
   
-  public static ProductDep getProduct(String productName) {
-    return productMap.get(productName);
+  public static Product getProduct(Category category, String productName) {
+    Optional<Product> optionalProduct =
+      productMap.get(category)
+        .stream()
+        .filter(product -> product.getName().equals(productName))
+        .findFirst();
+    
+    if(optionalProduct.isPresent()) {
+      return optionalProduct.get();
+    };
+    
+    return null;
   }
-  
-  static  {
-    productMap.put("Toothbrush", new ProductDep("Toothbrush", 20000));
-    productMap.put("Toothpaste", new ProductDep("Toothpaste", 21000));
-  }
-  
 }
