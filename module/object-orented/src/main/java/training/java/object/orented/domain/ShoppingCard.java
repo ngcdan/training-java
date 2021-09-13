@@ -1,6 +1,5 @@
 package training.java.object.orented.domain;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,9 +10,9 @@ public class ShoppingCard {
     this.lineItems.add(lineItem);
   }
   
-  public BigDecimal getTotalCost() {
+  public double getTotalCost() {
     return lineItems.stream()
-      .reduce(BigDecimal.ZERO, (result, lineItem) -> result.add(lineItem.getPrice()), BigDecimal::add);
+      .reduce(0.0, (result, lineItem) -> result + lineItem.getPrice(), Double::sum);
   }
   
   @Override

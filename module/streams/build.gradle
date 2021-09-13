@@ -7,5 +7,5 @@ eclipse {
 }
 
 dependencies {
-    compile project(':training-java-object-orented')
+//    compile project(':training-java-object-orented')
 }

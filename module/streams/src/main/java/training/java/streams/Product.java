@@ -1,32 +1,21 @@
-package training.java.object.orented.domain;
+package training.java.streams;
 
 import lombok.Getter;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @Getter
 public class Product {
   private Category category;
   private String name;
-  private double price;
-  private double discount;
-  private int weight;
+  private BigDecimal price;
   
-  public Product(Category category, String name, double price) {
+  public Product(Category category, String name, BigDecimal price) {
     this.category = category;
     this.name = name;
     this.price = price;
   }
-  
-  public double getPrice() {
-    return price * (100 - discount) / 100.0;
-  }
-  
-  public Product withDiscount(int discount) {
-    this.discount = discount;
-    return this;
-  }
-  
   //%[argument_index$][flags][width][.precision]conversion
   @Override
   public String toString() {
@@ -38,7 +27,7 @@ public class Product {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Product product = (Product) o;
-    return category == product.category && name.equals(product.name) && price == product.price;
+    return category == product.category && name.equals(product.name) && price.equals(product.price);
   }
   
   @Override

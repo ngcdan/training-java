@@ -1,14 +1,13 @@
 package training.java.object.orented.domain;
 
-import java.math.BigDecimal;
 import java.util.UUID;
 
 public class Payment {
   private CreditCard creditCard;
-  private BigDecimal value;
+  private double value;
   private UUID randomUUID;
   
-  public Payment(CreditCard creditCard, BigDecimal value, UUID randomUUID) {
+  public Payment(CreditCard creditCard, double value, UUID randomUUID) {
     this.creditCard = creditCard;
     this.value = value;
     this.randomUUID = randomUUID;

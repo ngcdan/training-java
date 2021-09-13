@@ -1,6 +1,5 @@
 package training.java.object.orented.domain;
 
-import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -11,7 +10,7 @@ public class CreditCard {
     this.cardNumber = cardNumber;
   }
   
-  public Optional<Payment> mkPayment(BigDecimal value) {
+  public Optional<Payment> mkPayment(double value) {
     if(Math.random() > 0.3) {
       return Optional.of(new Payment(this, value, UUID.randomUUID()));
     } else {
