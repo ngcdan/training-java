@@ -1,8 +1,11 @@
 package training.java.object.orented.domain;
 
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class ShoppingCard {
   private List<LineItem> lineItems = new ArrayList<>();
   

@@ -19,6 +19,7 @@ public class Product {
   }
   
   public double getPrice() {
+    double shippingCost = category.getShippingCost(weight);
     return price * (100 - discount) / 100.0;
   }
   

@@ -1,5 +1,8 @@
 package training.java.object.orented.domain;
 
+import lombok.Getter;
+
+@Getter
 public class Order {
   private Customer customer;
   private ShoppingCard card;

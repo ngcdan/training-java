@@ -1,5 +1,8 @@
 package training.java.object.orented.domain;
 
+import lombok.Getter;
+
+@Getter
 public class LineItem {
   private Product product;
   private int quantity;
