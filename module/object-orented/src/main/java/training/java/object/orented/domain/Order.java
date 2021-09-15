@@ -5,10 +5,10 @@ import lombok.Getter;
 @Getter
 public class Order {
   private Customer customer;
-  private ShoppingCard card;
+  private ShoppingCart card;
   private Payment payment;
   
-  public Order(Customer customer, ShoppingCard card, Payment payment) {
+  public Order(Customer customer, ShoppingCart card, Payment payment) {
     this.customer = customer;
     this.card = card;
     this.payment = payment;

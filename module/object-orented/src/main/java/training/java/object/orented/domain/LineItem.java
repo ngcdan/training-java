@@ -23,4 +23,8 @@ public class LineItem {
       ", quantity=" + quantity +
       '}';
   }
+  
+  public static double calculateShippingCost(LineItem lineItem) {
+    return lineItem.getProduct().calculateShippingCost() * lineItem.getQuantity();
+  }
 }

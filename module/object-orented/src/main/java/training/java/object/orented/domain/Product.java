@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.util.Objects;
 
 @Getter
-public class Product {
+public abstract class Product {
   private Category category;
   private String name;
   private double price;
@@ -46,4 +46,6 @@ public class Product {
   public int hashCode() {
     return Objects.hash(category, name, price);
   }
+  
+  public abstract int calculateShippingCost();
 }

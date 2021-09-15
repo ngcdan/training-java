@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-public class ShoppingCard {
+public class ShoppingCart {
   private List<LineItem> lineItems = new ArrayList<>();
   
   public void addLineItem(LineItem lineItem) {
