@@ -7,3 +7,6 @@ so that they don't ripple out into the whole system.
 
 **Example**
 Encapsulate Product Type (Category) Variation. 
+
+## UML
+![alt text](https://github.com/ngcdan/training-java/blob/master/module/object-orented/UML.png?raw=true)
