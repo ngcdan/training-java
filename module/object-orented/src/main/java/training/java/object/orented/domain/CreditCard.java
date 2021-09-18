@@ -1,7 +1,7 @@
 package training.java.object.orented.domain;
-
-import java.util.Optional;
-import java.util.UUID;
+  
+  import java.util.Optional;
+  import java.util.UUID;
 
 public class CreditCard implements PaymentMethod {
   private final long cardNumber;
@@ -22,7 +22,7 @@ public class CreditCard implements PaymentMethod {
   @Override
   public String toString() {
     return "CreditCard{" +
-      "\ncardNumber=" + cardNumber +
+      "cardNumber=" + cardNumber +
       '}';
   }
 }

@@ -12,26 +12,18 @@ public class ShoppingCardUnitTest {
   @Test
   public void shoppingCardUnitTest() {
     Customer dan = new Customer("dan");
+    PaymentMethod eftAccount = new EftAccount("jane@janedoe.com");
     dan.addPaymentMethod("Dan's credit card", new CreditCard(11111));
-    dan.addPaymentMethod("Dan's bank account", new CreditCard(1234));
+    dan.addPaymentMethod("Dan's bank account", new BankAccount(12121212, 1234));
+    dan.addPaymentMethod("jane@janedoe.com", eftAccount);
     
     ShoppingCart cart = new ShoppingCart();
     Product toothbrush = Catalogue.getProduct(Category.CLEANING, "Detergent");
     Product toothpaste = Catalogue.getProduct(Category.CLEANING, "Scourer");
     cart.addLineItem(new LineItem(toothbrush, 2));
     cart.addLineItem(new LineItem(toothpaste, 1));
-    
-    double totalShippingCost = cart.getLineItems().stream().mapToDouble(LineItem::calculateShippingCost).sum();
-    
-    System.out.println(totalShippingCost);
     Optional<Order> order = dan.checkout(cart, "Dan's credit card");
-    System.out.println(cart.getTotalCost());
     System.out.println(order);
-    
-    /*
-    order.ifPresent(ShoppingCardUnitTest::fulfil);
-    System.out.println(order);
-    */
   }
   
   @Test

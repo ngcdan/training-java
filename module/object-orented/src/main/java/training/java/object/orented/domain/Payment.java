@@ -3,22 +3,22 @@ package training.java.object.orented.domain;
 import java.util.UUID;
 
 public class Payment {
-  private CreditCard creditCard;
-  private double value;
-  private UUID randomUUID;
+  private final PaymentMethod paymentMethod;
+  private final double value;
+  private final UUID transactionID;
   
-  public Payment(CreditCard creditCard, double value, UUID randomUUID) {
-    this.creditCard = creditCard;
+  public Payment(PaymentMethod paymentMethod, double value, UUID transactionID) {
+    this.paymentMethod = paymentMethod;
     this.value = value;
-    this.randomUUID = randomUUID;
+    this.transactionID = transactionID;
   }
   
   @Override
   public String toString() {
     return "Payment{" +
-      "creditCard=" + creditCard +
+      "paymentMethod=" + paymentMethod +
       ", value=" + value +
-      ", randomUUID=" + randomUUID +
+      ", transactionId=" + transactionID +
       '}';
   }
 }

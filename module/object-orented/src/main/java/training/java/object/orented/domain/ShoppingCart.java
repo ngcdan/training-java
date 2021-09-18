@@ -4,10 +4,11 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 public class ShoppingCart {
-  private List<LineItem> lineItems = new ArrayList<>();
+  private final List<LineItem> lineItems = new ArrayList<>();
   
   public void addLineItem(LineItem lineItem) {
     this.lineItems.add(lineItem);
@@ -18,10 +19,16 @@ public class ShoppingCart {
       .reduce(0.0, (result, lineItem) -> result + lineItem.getPrice(), Double::sum);
   }
   
+  public List<LineItem> getLineItems() {
+    return lineItems.stream()
+      .map(LineItem::new)
+      .collect(Collectors.toList());
+  }
+  
   @Override
   public String toString() {
-    return "ShoppingCard{" +
-      "\nlineItems=" + lineItems +
+    return "ShoppingCart{" +
+      "lineItems=" + lineItems +
       '}';
   }
 }

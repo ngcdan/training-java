@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public class Customer {
   private final String name;
-  private Map<String, PaymentMethod> paymentMethods = new HashMap<>();
+  private final Map<String, PaymentMethod> paymentMethods = new HashMap<>();
   
   public void addPaymentMethod(String nickname, PaymentMethod paymentMethod) {
     paymentMethods.put(nickname, paymentMethod);
@@ -27,6 +27,8 @@ public class Customer {
   @Override
   public String toString() {
     return "Customer{" +
-      "\nname = " + name + "}";
+      "name='" + name + '\'' +
+      ", paymentMethods=" + paymentMethods +
+      '}';
   }
 }
