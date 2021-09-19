@@ -1,16 +1,14 @@
 package training.java.object.orented.domain;
 
 import lombok.Getter;
+import lombok.Setter;
 
-import java.util.Objects;
-
-@Getter
+@Getter @Setter
 public abstract class Product {
   private Category category;
   private String name;
   private double price;
-  private double discount;
-  private int weight;
+  private double productDiscount;
   
   public Product(Category category, String name, double price) {
     this.category = category;
@@ -19,33 +17,23 @@ public abstract class Product {
   }
   
   public double getPrice() {
-    double shippingCost = category.getShippingCost(weight);
-    return price * (100 - discount) / 100.0;
+    int shippingCost = calculateShippingCost();
+    return Math.round((1 - productDiscount) * price) + shippingCost;
   }
   
-  public Product withDiscount(int discount) {
-    this.discount = discount;
+  public Product withProductDiscount(int discount) {
+    this.productDiscount = discount;
     return this;
   }
   
-  //%[argument_index$][flags][width][.precision]conversion
+  public abstract int calculateShippingCost();
+  
   @Override
   public String toString() {
-    return String.format("%-10s %-16s $ %6.2f", category, name, price);
+    return "Product{" +
+      "name='" + name + '\'' +
+      ", price=" + price +
+      ", discount=" + productDiscount +
+      '}';
   }
-  
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Product product = (Product) o;
-    return category == product.category && name.equals(product.name) && price == product.price;
-  }
-  
-  @Override
-  public int hashCode() {
-    return Objects.hash(category, name, price);
-  }
-  
-  public abstract int calculateShippingCost();
 }

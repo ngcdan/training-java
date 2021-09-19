@@ -8,9 +8,9 @@ import static training.java.object.orented.domain.Category.*;
 
 public class ExampleData {
   private static final List<Product> PRODUCTS = Arrays.asList(
-    new PhysicalProduct(FOOD, "Oranges",1.65).withDiscount(10),
-    new PhysicalProduct(FOOD, "Gouda cheese",6.79).withDiscount(10),
-    new PhysicalProduct(UTENSILS, "Plates",12.95).withDiscount(20),
+    new PhysicalProduct(FOOD, "Oranges",1.65).withProductDiscount(10),
+    new PhysicalProduct(FOOD, "Gouda cheese",6.79).withProductDiscount(10),
+    new PhysicalProduct(UTENSILS, "Plates",12.95).withProductDiscount(20),
     new PhysicalProduct(CLEANING, "Detergent",3.79),
     new PhysicalProduct(FOOD, "Soft drink",1.99),
     new PhysicalProduct(OFFICE, "Pencils",5.79),

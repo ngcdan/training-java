@@ -1,7 +1,7 @@
 package training.java.object.orented.domain;
 
 public class BusinessCustomer extends Customer {
-  private BusinessSize size;
+  private final BusinessSize size;
   
   public enum BusinessSize { SMALL, MEDIUM, LARGE }
   
@@ -17,5 +17,13 @@ public class BusinessCustomer extends Customer {
       case MEDIUM -> 10;
       case LARGE -> 20;
     };
+  }
+  
+  @Override
+  public String toString() {
+    return "BusinessCustomer {" +
+      super.toString() +
+      " size=" + size +
+      '}';
   }
 }
