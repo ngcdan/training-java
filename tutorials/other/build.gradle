@@ -1,0 +1,12 @@
+archivesBaseName = "training-java-other"
+
+eclipse {
+    project {
+        name = 'training-java-other'
+    }
+}
+
+dependencies {
+    compile project(":training-java-spring-framework")
+    testImplementation group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
+}

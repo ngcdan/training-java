@@ -21,8 +21,8 @@ project(':training-java-algorithm').projectDir = new File('tutorials/algorithm')
 include 'training-java-asynchronous'
 project(':training-java-asynchronous').projectDir = new File('tutorials/asynchronous')
 
-include 'training-java-streams'
-project(':training-java-streams').projectDir = new File('tutorials/streams')
+include 'training-java-other'
+project(':training-java-other').projectDir = new File('tutorials/other')
 
 include 'training-java-spring-framework'
 project(':training-java-spring-framework').projectDir = new File('core/spring-framework')
