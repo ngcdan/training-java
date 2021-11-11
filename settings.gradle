@@ -27,3 +27,6 @@ project(':training-java-other').projectDir = new File('tutorials/other')
 include 'training-java-spring-framework'
 project(':training-java-spring-framework').projectDir = new File('core/spring-framework')
 
+include 'training-java-settings'
+project(':training-java-settings').projectDir = new File('core/settings')
+
