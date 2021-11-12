@@ -1,21 +1,21 @@
 rootProject.name = 'training-java'
 
-include ':training-java-app-server'
+include 'training-java-app-server'
 project(':training-java-app-server').projectDir = new File('app/server')
 
-include ':training-java-design-pattern'
+include 'training-java-design-pattern'
 project(':training-java-design-pattern').projectDir = new File('tutorials/design-pattern')
 
-include ':training-java-data-structure'
+include 'training-java-data-structure'
 project(':training-java-data-structure').projectDir = new File('tutorials/data-structure')
 
-include ':training-java-reflection'
+include 'training-java-reflection'
 project(':training-java-reflection').projectDir = new File('tutorials/reflection')
 
-include ':training-java-object-orented'
+include 'training-java-object-orented'
 project(':training-java-object-orented').projectDir = new File('tutorials/object-orented')
 
-include ':training-java-algorithm'
+include 'training-java-algorithm'
 project(':training-java-algorithm').projectDir = new File('tutorials/algorithm')
 
 include 'training-java-asynchronous'
@@ -29,4 +29,7 @@ project(':training-java-spring-framework').projectDir = new File('core/spring-fr
 
 include 'training-java-settings'
 project(':training-java-settings').projectDir = new File('core/settings')
+
+include 'training-java-app-release'
+project(':training-java-app-release').projectDir = new File('app/release')
 
