@@ -6,11 +6,4 @@ eclipse {
     }
 }
 
-task "create-dirs" {
-    sourceSets*.java.srcDirs*.each { it.mkdirs() }
-    sourceSets*.resources.srcDirs*.each { it.mkdirs() }
-}
-
-dependencies {
-
-}
+dependencies {}
