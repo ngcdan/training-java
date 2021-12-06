@@ -1,16 +1,17 @@
 package training.java.settings.unit;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import training.java.settings.unit.converter.DistanceUnit;
 import training.java.settings.unit.converter.MassUnit;
 import training.java.settings.unit.converter.VolumeUnit;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public class UnitConverterUnitTest {
-  
-  @Test @Tag("unit")
+
+  @Test
+  @Tag("unit")
   public void testMassUnit() {
     assertEquals(1, MassUnit.convert(1, "g", "g"));
     assertEquals(1, MassUnit.convert(1000, "g", "kgs"));
@@ -21,7 +22,7 @@ public class UnitConverterUnitTest {
     assertEquals(1, MassUnit.convert(1000000, "g", "ton"));
     assertEquals(1, MassUnit.convert(907184.74, "g", "stn"));
     assertEquals(1, MassUnit.convert(1016046.9088, "g", "ltn"));
-    
+
     assertEquals(1, MassUnit.GRAM.convert(1, MassUnit.GRAM));
     assertEquals(1, MassUnit.GRAM.toGram(1));
     assertEquals(1, MassUnit.GRAM.convert(1000, MassUnit.KILOGRAM));
@@ -34,14 +35,14 @@ public class UnitConverterUnitTest {
     assertEquals(1000000, MassUnit.TONE.convert(1, MassUnit.GRAM));
     assertEquals(1000, MassUnit.TONE.convert(1, MassUnit.KILOGRAM));
     assertEquals(1, MassUnit.TONE.convert(1, MassUnit.TONE));
-  
-  
+
     assertEquals(454, MassUnit.POUND.convert(1, MassUnit.GRAM));
     assertEquals(0.454, MassUnit.POUND.convert(1, MassUnit.KILOGRAM));
     assertEquals(0.000454, MassUnit.POUND.convert(1, MassUnit.TONE));
   }
-  
-  @Test @Tag("unit")
+
+  @Test
+  @Tag("unit")
   public void testVolumeUnit() {
     assertEquals(1, VolumeUnit.convert(1, "mm3", "mm3"));
     assertEquals(1, VolumeUnit.convert(1000, "mm3", "cm3"));
@@ -49,8 +50,9 @@ public class UnitConverterUnitTest {
     assertEquals(1, VolumeUnit.convert(1000, "l", "m3"));
     assertEquals(1, VolumeUnit.convert(1000000000, "m3", "km3"));
   }
-  
-  @Test @Tag("unit")
+
+  @Test
+  @Tag("unit")
   public void testDistanceUnit() {
     assertEquals(1, DistanceUnit.MM.toMillimeter(1));
     assertEquals(1, DistanceUnit.MM.toCentimeter(10));
@@ -58,17 +60,17 @@ public class UnitConverterUnitTest {
     assertEquals(1, DistanceUnit.MM.toMeter(1000));
     assertEquals(1, DistanceUnit.MM.toKilometer(1000000));
     assertEquals(1, DistanceUnit.M.toKilometer(1000));
-    
+
     assertEquals(1, DistanceUnit.convert(1000, DistanceUnit.M, DistanceUnit.KM));
-    
+
     assertEquals(1, DistanceUnit.M.convert(1000, DistanceUnit.KM));
-  
+
     assertEquals(1, DistanceUnit.convert(1, "mm", "mm"));
     assertEquals(1, DistanceUnit.convert(10, "mm", "cm"));
     assertEquals(1, DistanceUnit.convert(100, "mm", "dm"));
     assertEquals(1, DistanceUnit.convert(1000, "mm", "M"));
     assertEquals(1, DistanceUnit.convert(1000000, "mm", "KM"));
-  
+
     assertEquals(1, DistanceUnit.convert(1000, "m", "km"));
   }
 }

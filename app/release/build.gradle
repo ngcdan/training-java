@@ -7,15 +7,15 @@ eclipse {
 }
 
 configurations {
-    commonJars       { transitive = false }
-    springBasicJars  { transitive = false }
-    springMoreJars   { transitive = false }
-    hibernateJars    { transitive = false }
-    jettyJars        { transitive = false }
+    commonJars { transitive = false }
+    springBasicJars { transitive = false }
+    springMoreJars { transitive = false }
+    hibernateJars { transitive = false }
+    jettyJars { transitive = false }
 
-    serverAppJars    { transitive = false }
+    serverAppJars { transitive = false }
 
-    printAppJars    { transitive = false }
+    printAppJars { transitive = false }
 }
 
 dependencies {
@@ -69,7 +69,7 @@ task releaseServer {
         }
 
         copy {
-            from "src/app/server" ;
+            from "src/app/server";
             into "${serverAppDir}";
         }
     }

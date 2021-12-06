@@ -1,29 +1,30 @@
 package training.java.ds.map;
 
-public class HashMap<Key, Value> implements Map<Key, Value>{
+public class HashMap<Key, Value> implements Map<Key, Value> {
+
   private Entry<Key, Value>[] array;
   private int numOfEntry;
   private int capacity;
-  
+
   public HashMap() {
     this((int) Math.pow(2, 4));
   }
-  
+
   public HashMap(int initSize) {
     this.capacity = initSize;
     array = new Entry[this.capacity];
     this.numOfEntry = 0;
   }
-  
+
   @Override
   public int size() { return numOfEntry; }
-  
+
   @Override
   public void clear() {
     array = new Entry[this.capacity];
     numOfEntry = 0;
   }
-  
+
   @Override
   public boolean containsKey(Key key) {
     int hash = calculateHash(key);
@@ -32,7 +33,7 @@ public class HashMap<Key, Value> implements Map<Key, Value>{
     }
     return false;
   }
-  
+
   @Override
   public boolean containsValue(Value value) {
     for(int i = 0; i < this.capacity; i++) {
@@ -43,18 +44,18 @@ public class HashMap<Key, Value> implements Map<Key, Value>{
     }
     return false;
   }
-  
+
   @Override
   public Value get(Key key) {
     int hash = calculateHash(key);
-    
+
     if(array[hash] == null) {
       return null;
     } else {
       return array[hash].getValue();
     }
   }
-  
+
   @Override
   public void put(Key key, Value value) {
     if(containsKey(key)) {
@@ -66,12 +67,12 @@ public class HashMap<Key, Value> implements Map<Key, Value>{
       numOfEntry++;
     }
   }
-  
+
   @Override
   public boolean isEmpty() {
     return numOfEntry == 0;
   }
-  
+
   @Override
   public Value remove(Key key) {
     Value result = get(key);
@@ -79,21 +80,21 @@ public class HashMap<Key, Value> implements Map<Key, Value>{
       int hash = calculateHash(key);
       array[hash] = null;
       numOfEntry--;
-      
+
       hash = (hash + 1) % this.capacity;
       while(array[hash] != null) {
         Entry<Key, Value> entry = array[hash];
         array[hash] = null;
         put(entry.getKey(), entry.getValue());
         numOfEntry--;
-        
+
         hash = (hash + 1) % this.capacity;
       }
     }
-    
+
     return result;
   }
-  
+
   private int calculateHash(Key key) {
     int hash = (key.hashCode() % this.capacity);
     while(array[hash] != null && !array[hash].getKey().equals(key)) {

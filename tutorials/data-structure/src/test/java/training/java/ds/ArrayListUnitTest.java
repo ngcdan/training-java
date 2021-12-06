@@ -1,10 +1,10 @@
 package training.java.ds;
 
-import org.junit.jupiter.api.Test;
-import training.java.ds.list.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+
+import org.junit.jupiter.api.Test;
+import training.java.ds.list.ArrayList;
 
 public class ArrayListUnitTest {
 
@@ -19,7 +19,7 @@ public class ArrayListUnitTest {
     arrayList.add("Five");
 
     assertEquals(5, arrayList.size());
-  
+
     //test retrieve by position
     assertEquals("One", arrayList.get(0));
     assertEquals("Four", arrayList.get(3));
@@ -30,10 +30,10 @@ public class ArrayListUnitTest {
 
     // test remove
     arrayList.remove("Two");
-    assertEquals( 4, arrayList.size());
+    assertEquals(4, arrayList.size());
     assertEquals(-1, arrayList.findPos("Two"));
     assertEquals("Three", arrayList.get(1));
-    
+
     // test removeAt
     arrayList.removeAt(2);  //now element is Four
     assertEquals(3, arrayList.size());

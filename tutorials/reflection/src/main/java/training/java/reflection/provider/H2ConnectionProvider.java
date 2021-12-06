@@ -1,10 +1,9 @@
 package training.java.reflection.provider;
 
-import training.java.reflection.annotation.Provides;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import training.java.reflection.annotation.Provides;
 
 public class H2ConnectionProvider {
 

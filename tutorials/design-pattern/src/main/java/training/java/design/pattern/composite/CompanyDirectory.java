@@ -5,12 +5,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class CompanyDirectory implements Employee {
+
   List<Employee> employees = new ArrayList<>();
-  
-  public void addEmployees(Employee ... employees) {
+
+  public void addEmployees(Employee... employees) {
     Collections.addAll(this.employees, employees);
   }
-  
+
   @Override
   public void showEmployeeDetails() {}
 }

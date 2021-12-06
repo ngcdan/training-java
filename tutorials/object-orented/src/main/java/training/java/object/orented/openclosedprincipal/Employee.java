@@ -16,24 +16,26 @@ public class Employee {
 
 
 public class Employee {
+
   private String name;
-  
+
   public Employee(String name) { this.name = name;}
-  
+
   interface Import {
+
     String fetchName();
   }
-  
+
   interface Export {
+
     void storeName(String name);
   }
-  
+
   public Employee(Import source) {
     name = source.fetchName();
   }
-  
+
   public void export(Export destination) {
     destination.storeName(name);
   }
 }
-

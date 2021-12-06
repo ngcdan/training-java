@@ -1,6 +1,5 @@
 ## Completable Future
 
-
 ## Trigger a task on the completion of other task?
 
 ```
@@ -8,11 +7,13 @@ thenCompose() <=> flatMap() in Stream API and OptionalAPi
 ```
 
 ### When both tasks complete, you can:
+
 - execute runnable
 - execute BiConsumer
 - execute BiFunction
 
-Example Code: pattern can use when what u want to do wait for both results to become available 
+Example Code: pattern can use when what u want to do wait for both results to become available
+
 ```java
 CompletableFuture<Long> cf1 = ...;
 CompletableFuture<User> cf2 = ...;
@@ -25,13 +26,15 @@ CompletableFuture<Void> cf3 = cf1.thenAcceptBoth(cf2, (id, name) -> logger.info(
 ```
 
 ### When either tasks complete, you can:
+
 - execute runnable
 - execute Consumer
 - execute Function
 
-In that case, both completable future must return objects of the same type 
+In that case, both completable future must return objects of the same type
 
 Example Code: pattern can use when what u want to do wait for both results to become available
+
 ```java
 CompletableFuture<Long> cf1 = ...;
 CompletableFuture<Long> cf2 = ...;

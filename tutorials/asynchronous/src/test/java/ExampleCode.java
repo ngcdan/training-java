@@ -6,24 +6,16 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class ExampleCode {
+
   public void createHttpClient() throws IOException, InterruptedException {
-    HttpClient client = HttpClient
-      .newBuilder()
-      .version(Version.HTTP_1_1) // work in http 2
+    HttpClient client = HttpClient.newBuilder().version(Version.HTTP_1_1) // work in http 2
       .build();
-    
-    
+
     // create a request
-    HttpRequest request = HttpRequest
-      .newBuilder()
-      .GET()
-      .uri(URI.create("https://anysite.com"))
-      .build();
-    
+    HttpRequest request = HttpRequest.newBuilder().GET().uri(URI.create("https://anysite.com")).build();
+
     // create a response
-    HttpResponse<String> response = client.send(
-      request,
-      HttpResponse.BodyHandlers.ofString());
+    HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
   }
   
   /*
@@ -44,4 +36,4 @@ public class ExampleCode {
     
     return new JSONObject(jsonResponse);
    */
-  }
+}

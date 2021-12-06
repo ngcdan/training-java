@@ -10,7 +10,9 @@ public class ArrayList<T> implements List<T> {
   }
 
   public ArrayList(int capacity) {
-    if(capacity < 0 ) throw new IllegalArgumentException("Capacity cannot be negative: " + capacity);
+    if(capacity < 0) {
+      throw new IllegalArgumentException("Capacity cannot be negative: " + capacity);
+    }
 
     array = (T[]) new Object[capacity];
     currPos = 0;
@@ -21,7 +23,7 @@ public class ArrayList<T> implements List<T> {
 
   @Override
   public void clear() {
-    for(int i = 0; i < currPos; i++){
+    for(int i = 0; i < currPos; i++) {
       array[i] = null;
     }
     currPos = 0;
@@ -34,7 +36,9 @@ public class ArrayList<T> implements List<T> {
   }
 
   public void addAll(T[] array) {
-    for(T sel : array) add(sel);
+    for(T sel : array) {
+      add(sel);
+    }
   }
 
   @Override
@@ -46,7 +50,9 @@ public class ArrayList<T> implements List<T> {
 
   @Override
   public T removeAt(int pos) {
-    if(pos >= currPos || pos < 0) throw new IndexOutOfBoundsException();
+    if(pos >= currPos || pos < 0) {
+      throw new IndexOutOfBoundsException();
+    }
     T Val = array[pos];
     while(pos < currPos) {
       array[pos] = array[pos + 1];
@@ -68,7 +74,7 @@ public class ArrayList<T> implements List<T> {
 
   @Override
   public int findPos(T obj) {
-    for(int pos = 0; pos < currPos; pos++ ) {
+    for(int pos = 0; pos < currPos; pos++) {
       if(array[pos].equals(obj)) {
         return pos;
       }
@@ -78,18 +84,19 @@ public class ArrayList<T> implements List<T> {
 
   private void checkFull() {
     if(currPos == array.length) {
-      T[] newArray = (T[]) new Object [(array.length * 3/2) + 1];
+      T[] newArray = (T[]) new Object[(array.length * 3 / 2) + 1];
       System.arraycopy(array, 0, newArray, 0, array.length);
       array = newArray;
     }
   }
 
   public String toString() {
-    if(size() == 0) return "[]";
-    else{
+    if(size() == 0) {
+      return "[]";
+    } else {
       StringBuilder sb = new StringBuilder(currPos);
       sb.append("[");
-      for(int i = 0; i < currPos - 1; i++){
+      for(int i = 0; i < currPos - 1; i++) {
         sb.append(array[i]).append(",");
       }
       sb.append(array[currPos - 1]).append("]");

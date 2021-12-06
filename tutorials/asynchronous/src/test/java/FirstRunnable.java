@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.Test;
 
 public class FirstRunnable {
-  
+
   @Test
   public void test() {
     Runnable runnable = () -> {
@@ -12,5 +12,5 @@ public class FirstRunnable {
     t.start();
     //    t.run(); //NO using
   }
-  
+
 }

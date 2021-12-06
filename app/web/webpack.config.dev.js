@@ -11,7 +11,8 @@ module.exports = {
     filename: 'bundle.js'
   },
   resolve: {
-    modules: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'public'), 'node_modules']
+    modules: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'public'),
+      'node_modules']
   },
   devServer: {
     stats: "minimal",
@@ -19,7 +20,7 @@ module.exports = {
     overlay: true,
     historyApiFallback: true,
     disableHostCheck: true,
-    headers: { "Access-Control-Allow-Origin": "*" },
+    headers: {"Access-Control-Allow-Origin": "*"},
     https: false,
     contentBase: path.join(__dirname, 'public')
   },

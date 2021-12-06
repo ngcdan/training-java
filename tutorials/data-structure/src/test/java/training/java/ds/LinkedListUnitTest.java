@@ -1,10 +1,12 @@
 package training.java.ds;
 
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import org.junit.jupiter.api.Test;
 import training.java.ds.list.LinkedList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class LinkedListUnitTest {
 
@@ -12,9 +14,9 @@ public class LinkedListUnitTest {
   public void testLinkedList() throws Exception {
     testList(new LinkedList<Integer>());
   }
-  
+
   void testList(LinkedList<Integer> linkedList) {
-    Integer[] list = new Integer[] { 1, 2, 3, 4 };
+    Integer[] list = new Integer[]{1, 2, 3, 4};
     // test Size empty
     assertEquals(0, linkedList.size());
     // test addAll
@@ -28,12 +30,12 @@ public class LinkedListUnitTest {
     assertEquals(Integer.valueOf(1), linkedList.get(0));
     assertEquals(Integer.valueOf(2), linkedList.get(1));
     assertEquals(Integer.valueOf(4), linkedList.get(2));
-    
+
     //test remove element not have in the linked list
-    try{
+    try {
       linkedList.remove(5);
       fail("Exception not thrown");
-    }catch(IllegalArgumentException e){
+    } catch(IllegalArgumentException e) {
       assertSame("Could not find element in the Linked List", e.getMessage());
     }
 

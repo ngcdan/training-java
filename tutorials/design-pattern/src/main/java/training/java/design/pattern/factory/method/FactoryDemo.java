@@ -2,14 +2,14 @@ package training.java.design.pattern.factory.method;
 
 public class FactoryDemo {
 
-	public static void main(String[] args) {
-		Website site = WebsiteFactory.getWebsite(WebsiteType.BLOG);
+  public static void main(String[] args) {
+    Website site = WebsiteFactory.getWebsite(WebsiteType.BLOG);
 
-		System.out.println(site.getPages());
+    System.out.println(site.getPages());
 
-		site = WebsiteFactory.getWebsite(WebsiteType.SHOP);
+    site = WebsiteFactory.getWebsite(WebsiteType.SHOP);
 
-		System.out.println(site.getPages());
-	}
+    System.out.println(site.getPages());
+  }
 
 }

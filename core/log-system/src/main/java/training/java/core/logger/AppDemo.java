@@ -8,7 +8,9 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 public class AppDemo {
+
   static Logger logger = Logger.getLogger("training.java.core");
+
   public static void main(String[] args) throws IOException {
     consoleLogger();
     fileLogger();
