@@ -5,6 +5,13 @@ eclipse {
         name = 'training-java-app-server'
     }
 }
+
+configurations {
+    api {
+        exclude group: "org.springframework.boot", module: "spring-boot-starter-data-jpa"
+    }
+}
+
 dependencies {
-    compile project(":training-java-spring-framework")
+    api project(':training-java-spring-framework')
 }
