@@ -1,5 +1,6 @@
 package training.java.ds.map;
 
+import java.io.Serial;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -7,17 +8,13 @@ import java.util.Properties;
 
 public class MapObject extends LinkedHashMap<String, Object> {
 
+  @Serial
   private static final long serialVersionUID = 1L;
 
   public MapObject() {}
 
   public MapObject(String key, Object val) {
     put(key, val);
-  }
-
-  public MapObject(String key1, Object val1, String key2, Object val2) {
-    put(key1, val1);
-    put(key2, val2);
   }
 
   public void putAll(Properties props) {

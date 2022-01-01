@@ -28,16 +28,13 @@ public class HashMap<Key, Value> implements Map<Key, Value> {
   @Override
   public boolean containsKey(Key key) {
     int hash = calculateHash(key);
-    if(array[hash] != null && array[hash].getKey().equals(key)) {
-      return true;
-    }
-    return false;
+    return array[hash] != null && array[hash].getKey().equals(key);
   }
 
   @Override
   public boolean containsValue(Value value) {
     for(int i = 0; i < this.capacity; i++) {
-      Entry entry = array[i];
+      Entry<Key, Value> entry = array[i];
       if(entry != null && entry.getValue().equals(value)) {
         return true;
       }
