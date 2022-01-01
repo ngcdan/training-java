@@ -1,20 +1,26 @@
 rootProject.name = 'training-java'
 
+// APP MODULES
 include 'training-java-app-server'
 project(':training-java-app-server').projectDir = new File('app/server')
 
 include 'training-java-app-release'
 project(':training-java-app-release').projectDir = new File('app/release')
 
+// CORE MODULES
 include 'training-java-spring-framework'
 project(':training-java-spring-framework').projectDir = new File('core/spring-framework')
 
 include 'training-java-settings'
 project(':training-java-settings').projectDir = new File('core/settings')
 
-include 'training-java-core-log-system'
-project(':training-java-core-log-system').projectDir = new File('core/log-system')
+include 'training-java-io'
+project(':training-java-io').projectDir = new File('core/io')
 
+include 'training-java-xlsx'
+project(':training-java-xlsx').projectDir = new File('core/xlsx')
+
+// TUTORIAL MODULES
 include 'training-java-design-pattern'
 project(':training-java-design-pattern').projectDir = new File('tutorials/design-pattern')
 
