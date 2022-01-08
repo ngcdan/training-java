@@ -15,6 +15,9 @@ public class SectionContext {
   private HeaderMapping headerMapping;
 
   @Getter
+  private SheetMetadata metadata;
+
+  @Getter
   private DataContext dataContext;
 
   private final MapObject attributes = new MapObject();
@@ -22,11 +25,10 @@ public class SectionContext {
   @Getter
   private List<String> errors;
 
-  public SectionContext() {}
-
-  public SectionContext(String name, DataContext ctx, HeaderMapping headerMapping) {
+  public SectionContext(String data, DataContext ctx, SheetMetadata metadata, HeaderMapping headerMapping) {
     this.name = name;
     this.dataContext = ctx;
+    this.metadata = metadata;
     this.headerMapping = headerMapping;
   }
 

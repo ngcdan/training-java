@@ -50,6 +50,19 @@ public class XSLXCell<T> {
     return validated;
   }
 
+  public boolean validate(SectionContext ctx, XLSXRow row, String cellVal) {
+    if(validators == null) return true;
+    boolean validated = true;
+    for(Validator validator : validators) {
+      if(!validator.callable.validate(ctx, header, cellVal)) {
+        String message = validator.message;
+        ctx.addError(header, message);
+        validated = false;
+      }
+    }
+    return validated;
+  }
+
   public XSLXCell<T> mapper(CellMapper<T> mapper) {
     this.mapper = mapper;
     return this;
