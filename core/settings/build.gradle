@@ -6,4 +6,6 @@ eclipse {
     }
 }
 
-dependencies {}
+dependencies {
+    compile project(":training-java-spring-framework")
+}
