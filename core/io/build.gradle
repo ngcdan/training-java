@@ -1,0 +1,5 @@
+archivesBaseName = "training-java-io"
+
+dependencies {
+    compile project(":training-java-data-structure")
+}

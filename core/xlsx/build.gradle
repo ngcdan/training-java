@@ -1,0 +1,7 @@
+archivesBaseName = "training-java-xlsx" //The base name to use for archive files.
+
+dependencies {
+    compile project(":training-java-spring-framework")
+    compile project(":training-java-io")
+    implementation 'org.apache.poi:poi-ooxml:5.1.0'
+}

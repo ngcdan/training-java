@@ -1,5 +1,8 @@
 package training.java.ds.map;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public interface Map<Key, Value> {
 
   void clear();
@@ -18,7 +21,8 @@ public interface Map<Key, Value> {
 
   int size();
 
-  public class Entry<Key, Value> {
+  @Getter @Setter
+  class Entry<Key, Value> {
 
     Key key;
     Value value;
@@ -26,22 +30,6 @@ public interface Map<Key, Value> {
     public Entry(Key key, Value value) {
       this.key = key;
       this.value = value;
-    }
-
-    public Key getKey() {
-      return key;
-    }
-
-    public Value getValue() {
-      return value;
-    }
-
-    public void setValue(Value value) {
-      this.value = value;
-    }
-
-    public void setKey(Key key) {
-      this.key = key;
     }
   }
 }
