@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Thu Nov 11 16:55:05 ICT 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-017d-0e6c-1922-000000c07fc8 
+on database directory memory:/Users/linuss/Dev/projects/training-java/tutorials/design-pattern/codejava/webdb with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@446cdf90 
+Loaded from file:/Users/linuss/.gradle/caches/modules-2/files-2.1/org.apache.derby/derby/10.14.1.0/3bcd8b1af3f8cd022d54d331e00064776be04f9c/derby-10.14.1.0.jar
+java.vendor=Azul Systems, Inc.
+java.runtime.version=15.0.3+3
+user.dir=/Users/linuss/Dev/projects/training-java/tutorials/design-pattern
+os.name=Mac OS X
+os.arch=aarch64
+os.version=11.6
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
