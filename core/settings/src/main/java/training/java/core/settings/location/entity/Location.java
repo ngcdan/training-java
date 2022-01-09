@@ -1,4 +1,4 @@
-package training.java.settings.location;
+package training.java.core.settings.location.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -64,4 +64,9 @@ public class Location extends AbstractPersistable<Long> {
     inverseJoinColumns = @JoinColumn(name = "location_type_id")
   )
   private List<LocationType> locationTypes;
+
+  public Location withCity(City city) {
+   cityCode = city.getCode();
+   return this;
+  }
 }

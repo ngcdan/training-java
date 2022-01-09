@@ -1,4 +1,4 @@
-package training.java.settings.location;
+package training.java.core.settings.location.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
