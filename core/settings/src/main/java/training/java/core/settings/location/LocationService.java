@@ -1,5 +1,6 @@
 package training.java.core.settings.location;
 
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,16 +11,16 @@ import java.util.List;
 @Service
 public class LocationService {
 
-  @Autowired
+  @Autowired @Getter
   private CountryLogic countryLogic;
 
-  @Autowired
+  @Autowired @Getter
   private StateLogic stateLogic;
 
-  @Autowired
+  @Autowired @Getter
   private CityLogic cityLogic;
 
-  @Autowired
+  @Autowired @Getter
   private CountryGroupLogic countryGroupLogic;
 
   @Autowired

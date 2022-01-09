@@ -8,4 +8,5 @@ eclipse {
 
 dependencies {
     compile project(":training-java-spring-framework")
+    compile project(":training-java-xlsx")
 }

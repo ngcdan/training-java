@@ -86,4 +86,10 @@ public class XSLXCell<T> {
       this.message   = message;
     }
   }
+
+  public static class TextField<T> extends XSLXCell<T> {
+    public TextField(String label, String label1, boolean b) {
+      super(label);
+    }
+  }
 }
