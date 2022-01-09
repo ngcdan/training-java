@@ -1,12 +1,12 @@
 package training.java.settings.unit;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import training.java.settings.unit.converter.DistanceUnit;
-import training.java.settings.unit.converter.MassUnit;
-import training.java.settings.unit.converter.VolumeUnit;
+import training.java.core.settings.unit.converter.DistanceUnit;
+import training.java.core.settings.unit.converter.MassUnit;
+import training.java.core.settings.unit.converter.VolumeUnit;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UnitConverterUnitTest {
 

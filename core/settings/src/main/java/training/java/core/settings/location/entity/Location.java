@@ -27,6 +27,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter @Setter
 public class Location extends AbstractPersistable<Long> {
+  private static final long serialVersionUID = 1L;
   public static final String TABLE_NAME = "settings_location";
 
   @NotNull

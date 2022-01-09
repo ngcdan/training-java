@@ -24,6 +24,7 @@ import javax.validation.constraints.NotNull;
 @JsonInclude(Include.NON_NULL)
 @NoArgsConstructor @Getter @Setter
 public class Country extends AbstractPersistable<Long> {
+  private static final long serialVersionUID = 1L;
   public static final String TABLE_NAME = "settings_country";
 
   @NotNull

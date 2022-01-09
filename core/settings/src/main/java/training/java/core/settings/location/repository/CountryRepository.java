@@ -30,9 +30,6 @@ public interface CountryRepository extends JpaRepository<Country, Serializable> 
   @Query( "SELECT c FROM Country c WHERE c.code LIKE :pattern% OR c.label LIKE :pattern%")
   List<Country> findByCountries(@Param("pattern") String pattern);
 
-  @Query("SELECT c FROM Country c WHERE c.storageState = 'ACTIVE' ORDER BY c.label ASC")
-  List<Country> findActiveCountries();
-  
   @Query("SELECT c FROM Country c WHERE c.id IN :ids")
   public List<Country> findCountries(@Param("ids") List<Long> ids);
 

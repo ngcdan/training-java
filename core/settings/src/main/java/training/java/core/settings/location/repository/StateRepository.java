@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public interface StateRepository extends JpaRepository<State, Serializable> {
-  public State getByCode(String code);
+  State getByCode(String code);
   
   @Query("SELECT s FROM State s WHERE s.code = :code AND s.countryCode = :countryCode")
   State getStateByCodeAndCountryCode(@Param("code") String code, @Param("countryCode") String countryCode);

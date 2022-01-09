@@ -22,6 +22,6 @@ public class CountryLogic {
   }
 
   public List<Country> findActiveCountries() {
-    return countryRepo.findActiveCountries();
+    return countryRepo.findAll();
   }
 }

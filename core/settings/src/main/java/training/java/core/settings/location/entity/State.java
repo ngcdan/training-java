@@ -25,6 +25,8 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Getter @Setter
 public class State extends AbstractPersistable<Long> {
+  private static final long serialVersionUID = 1L;
+
   public static final String TABLE_NAME = "settings_state";
 
   @NotNull
