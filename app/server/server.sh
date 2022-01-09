@@ -43,18 +43,13 @@ function get_opt() {
 
 
 PROJECT_DIR=`cd "$bin"; pwd`
-echo "Project dir : $PROJECT_DIR"
-
 ROOT_DIR="$PROJECT_DIR/../.."
-echo "Root dir : $ROOT_DIR"
 
 JAVACMD="$JAVA_HOME/bin/java"
 APP_HOME="$PROJECT_DIR/app/server"
-echo "App home $APP_HOME"
 
 LIB="$PROJECT_DIR:$APP_HOME/lib/*:$APP_HOME/lib/spring/*:$APP_HOME/lib/hibernate/*"
 CLASSPATH="${CLASSPATH}:$LIB:$APP_HOME/config"
-echo "Class path $CLASSPATH"
 
 if $window; then
   JAVA_HOME=`cygpath --absolute --windows "$JAVA_HOME"`
@@ -118,7 +113,4 @@ else
   echo "    ./server.sh -stop "
   echo "  To run the server as console"
   echo "    ./server.sh"
-  echo "  Optional parameters for the console mode:"
-  echo "    --app.db.load=[test,none] to load the sample test data or an empty database"
-  echo "    --server.port=7080 to override the default web server port"
 fi
