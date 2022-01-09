@@ -1,10 +1,13 @@
 package training.java.settings.currency;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.Map;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import training.java.core.settings.currency.ExchangeRate;
+import training.java.core.settings.currency.ExchangeRateConverter;
+
+import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CurrencyConverterUnitTest {
 

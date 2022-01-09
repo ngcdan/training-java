@@ -18,6 +18,7 @@ dependencies {
     api project(':training-java-spring-framework')
     api project(':training-java-io')
     api project(':training-java-xlsx')
+    api project(':training-java-settings')
 
     springJars project(':training-java-spring-framework')
     serverAppJars project(':training-java-app-server')
