@@ -1,11 +1,8 @@
 rootProject.name = 'training-java'
 
-// APP MODULES
+// APP
 include 'training-java-app-server'
 project(':training-java-app-server').projectDir = new File('app/server')
-
-include 'training-java-app-release'
-project(':training-java-app-release').projectDir = new File('app/release')
 
 // CORE MODULES
 include 'training-java-spring-framework'
