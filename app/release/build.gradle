@@ -3,13 +3,17 @@ archivesBaseName = "training-java-app-release"
 configurations {
     commonJars { transitive = false }
     springJars { transitive = true }
+    hibernateJars { transitive = false }
     serverAppJars { transitive = false }
 }
 
 dependencies {
-    compile project(":training-java-app-server")
+    api project(":training-java-app-server")
+    testImplementation 'com.h2database:h2:1.3.148'
 
     springJars project(':training-java-spring-framework')
+    hibernateJars 'com.h2database:h2:1.3.148'
+
     serverAppJars project(':training-java-settings')
     serverAppJars project(':training-java-io')
     serverAppJars project(':training-java-xlsx')
@@ -31,6 +35,10 @@ task releaseServer {
 
         configurations.springJars.each { File file ->
             copy { from file into "${serverAppDir}/lib/spring" }
+        }
+
+        configurations.springJars.each { File file ->
+            copy { from file into "${serverAppDir}/lib/hibernate" }
         }
 
         configurations.serverAppJars.each { File file ->

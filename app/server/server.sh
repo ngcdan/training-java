@@ -41,20 +41,20 @@ function get_opt() {
   echo $DEFAULT_VALUE
 }
 
-bin=`dirname "$0"`
-bin=`cd "$bin"; pwd`
 
-echo "bin dir $bin"
+PROJECT_DIR=`cd "$bin"; pwd`
+echo "Project dir : $PROJECT_DIR"
+
+ROOT_DIR="$PROJECT_DIR/../.."
+echo "Root dir : $ROOT_DIR"
 
 JAVACMD="$JAVA_HOME/bin/java"
-APP_HOME=`cd $bin/..; pwd; cd $bin`
+APP_HOME="$PROJECT_DIR/app/server"
+echo "App home $APP_HOME"
 
-# create log folder
-mkdir -p $APP_HOME/logs
-
-# library in project
-LIB="$APP_HOME:$APP_HOME/lib/*:$APP_HOME/lib/spring/*:$APP_HOME/lib/hibernate/*:$APP_HOME/lib/jetty/*"
+LIB="$PROJECT_DIR:$APP_HOME/lib/*:$APP_HOME/lib/spring/*:$APP_HOME/lib/hibernate/*"
 CLASSPATH="${CLASSPATH}:$LIB:$APP_HOME/config"
+echo "Class path $CLASSPATH"
 
 if $window; then
   JAVA_HOME=`cygpath --absolute --windows "$JAVA_HOME"`
@@ -71,9 +71,9 @@ function start() {
   JAVA_OPTS="-server -XX:+UseParallelGC -Xshare:auto -Xms128m -Xmx1024m -Dfile.encoding=UTF-8"
   JAVA_OPTS="$JAVA_OPTS -Duser.dir=$APP_HOME"
 
-  CLASS="com.ahaysoft.server.ServerApp"
+  CLASS="training.java.app.server.ServerApp"
 
-  ARGS="--app.home=$APP_HOME --app.config.dir=$APP_HOME/config --app.tmp.dir=$APP_HOME/tmp"
+  ARGS="--app.home=$APP_HOME --app.config.dir=$APP_HOME/config"
   ARGS="$ARGS --build.version=$DATETIME"
 
   DAEMON_OPT=$(has_opt "-daemon" $@ )
