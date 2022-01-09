@@ -1,12 +1,7 @@
 archivesBaseName = "training-java-app-server"
 
-eclipse {
-    project {
-        name = 'training-java-app-server'
-    }
-}
-
 configurations {
+    // Exclude dependencies because the datasource has not been configured yet
     api {
         exclude group: "org.springframework.boot", module: "spring-boot-starter-data-jpa"
     }
@@ -14,4 +9,6 @@ configurations {
 
 dependencies {
     api project(':training-java-spring-framework')
+    api project(':training-java-io')
+    api project(':training-java-xlsx')
 }

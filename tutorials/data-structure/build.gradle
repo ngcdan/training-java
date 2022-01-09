@@ -1,9 +1,0 @@
-archivesBaseName = "training-java-ds"
-
-eclipse {
-    project {
-        name = 'training-java-ds'
-    }
-}
-
-dependencies {}

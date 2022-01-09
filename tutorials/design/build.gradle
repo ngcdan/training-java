@@ -1,0 +1,5 @@
+archivesBaseName = "training-java-design-pattern"
+
+dependencies {
+    compile group: 'org.apache.derby', name: 'derby', version: '10.14.1.0'
+}

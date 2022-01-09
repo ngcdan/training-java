@@ -1,9 +1,0 @@
-archivesBaseName = "training-java-object-orented"
-
-eclipse {
-    project {
-        name = 'training-java-object-orented'
-    }
-}
-
-dependencies {}

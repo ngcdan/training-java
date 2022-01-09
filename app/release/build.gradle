@@ -1,46 +1,27 @@
 archivesBaseName = "training-java-app-release"
 
-eclipse {
-    project {
-        name = 'training-java-app-release'
-    }
-}
-
 configurations {
     commonJars { transitive = false }
-    springBasicJars { transitive = false }
-    springMoreJars { transitive = false }
-    hibernateJars { transitive = false }
-    jettyJars { transitive = false }
-
+    springJars { transitive = true }
     serverAppJars { transitive = false }
-
-    printAppJars { transitive = false }
 }
 
 dependencies {
-    compile project(":training-java-object-orented")
+    compile project(":training-java-app-server")
 
-    serverAppJars project(':training-java-app-server')
-    serverAppJars project(':training-java-design-pattern')
-    serverAppJars project(':training-java-data-structure')
-    serverAppJars project(':training-java-reflection')
-    serverAppJars project(':training-java-object-orented')
-    serverAppJars project(':training-java-algorithm')
-    serverAppJars project(':training-java-asynchronous')
-    serverAppJars project(':training-java-other')
-    serverAppJars project(':training-java-spring-framework')
+    springJars project(':training-java-spring-framework')
     serverAppJars project(':training-java-settings')
-    serverAppJars project(':training-java-object-orented')
+    serverAppJars project(':training-java-io')
+    serverAppJars project(':training-java-xlsx')
 }
 
 task releaseServer {
     doLast {
         println "\n\n";
-        println "Copy Release template structure ${releaseDir}";
+        println "Copy Release template structure /Users/linuss/Dev/projects/training-java/app/release/";
         println "##############################################################################################";
 
-        def serverAppDir = "${releaseDir}/app/server";
+        def serverAppDir = "/Users/linuss/Dev/projects/training-java/app/release/server";
         println "\n";
         println "Deploy to  ${serverAppDir}";
 
@@ -48,20 +29,8 @@ task releaseServer {
             copy { from file into "${serverAppDir}/lib" }
         }
 
-        configurations.springBasicJars.each { File file ->
+        configurations.springJars.each { File file ->
             copy { from file into "${serverAppDir}/lib/spring" }
-        }
-
-        configurations.springMoreJars.each { File file ->
-            copy { from file into "${serverAppDir}/lib/spring" }
-        }
-
-        configurations.hibernateJars.each { File file ->
-            copy { from file into "${serverAppDir}/lib/hibernate" }
-        }
-
-        configurations.jettyJars.each { File file ->
-            copy { from file into "${serverAppDir}/lib/jetty" }
         }
 
         configurations.serverAppJars.each { File file ->

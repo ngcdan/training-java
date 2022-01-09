@@ -21,23 +21,20 @@ include 'training-java-xlsx'
 project(':training-java-xlsx').projectDir = new File('core/xlsx')
 
 // TUTORIAL MODULES
-include 'training-java-design-pattern'
-project(':training-java-design-pattern').projectDir = new File('tutorials/design-pattern')
+include 'training-java-design'
+project(':training-java-design').projectDir = new File('tutorials/design')
 
-include 'training-java-data-structure'
-project(':training-java-data-structure').projectDir = new File('tutorials/data-structure')
+include 'training-java-ds'
+project(':training-java-ds').projectDir = new File('tutorials/ds')
 
 include 'training-java-reflection'
 project(':training-java-reflection').projectDir = new File('tutorials/reflection')
 
-include 'training-java-object-orented'
-project(':training-java-object-orented').projectDir = new File('tutorials/object-orented')
+include 'training-java-algo'
+project(':training-java-algo').projectDir = new File('tutorials/algo')
 
-include 'training-java-algorithm'
-project(':training-java-algorithm').projectDir = new File('tutorials/algorithm')
+include 'training-java-async'
+project(':training-java-async').projectDir = new File('tutorials/async')
 
-include 'training-java-asynchronous'
-project(':training-java-asynchronous').projectDir = new File('tutorials/asynchronous')
-
-include 'training-java-other'
-project(':training-java-other').projectDir = new File('tutorials/other')
+include 'training-java-core'
+project(':training-java-core').projectDir = new File('tutorials/core')
