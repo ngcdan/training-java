@@ -19,8 +19,6 @@ dependencies {
     api project(':training-java-io')
     api project(':training-java-xlsx')
 
-    testImplementation 'com.h2database:h2:1.3.148'
-
     springJars project(':training-java-spring-framework')
     serverAppJars project(':training-java-app-server')
     serverAppJars project(':training-java-settings')

@@ -1,4 +1,4 @@
-package training.java.core.settings.location;
+package training.java.core.settings.location.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -30,4 +30,9 @@ public class CountryCountryGroupRelation extends AbstractPersistable<Long> {
   @NotNull
   @Column(name = "country_group_id")
   private Long countryGroupId;
+
+  public CountryCountryGroupRelation(CountryGroup group, Country country) {
+   countryGroupId = group.getId();
+   countryId = country.getId();
+  }
 }
