@@ -16,7 +16,8 @@ public class LocationController {
   private LocationService service;
 
   @GetMapping("country/group/{code}")
-  public @ResponseBody CountryGroup getCountryGroup(HttpSession session, @PathVariable("code") String code) {
+  public @ResponseBody
+  CountryGroup getCountryGroup(HttpSession session, @PathVariable("code") String code) {
     return service.getCountryGroup(code);
   }
 
@@ -50,7 +51,8 @@ public class LocationController {
   }
 
   @GetMapping("country/{code}")
-  public @ResponseBody Country loadCountry(
+  public @ResponseBody
+  Country loadCountry(
     HttpSession session, @PathVariable("code") String code) {
     return service.getCountry(code);
   }
@@ -96,7 +98,8 @@ public class LocationController {
   }
 
   @GetMapping("{code}")
-  public @ResponseBody Location loadLocation(HttpSession session, @PathVariable("code") String code){
+  public @ResponseBody
+  Location loadLocation(HttpSession session, @PathVariable("code") String code){
     return service.getLocation(code);
   }
 
@@ -106,7 +109,8 @@ public class LocationController {
   }
 
   @PutMapping("type")
-  public @ResponseBody LocationType saveLocationType(HttpSession session, @RequestBody LocationType locationType) {
+  public @ResponseBody
+  LocationType saveLocationType(HttpSession session, @RequestBody LocationType locationType) {
     return service.saveLocationType(locationType);
   }
 

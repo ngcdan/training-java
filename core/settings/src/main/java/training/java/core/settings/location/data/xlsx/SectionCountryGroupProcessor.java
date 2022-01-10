@@ -39,7 +39,7 @@ public class SectionCountryGroupProcessor  extends XLSXSectionProcessor<CountryG
 
   private class DefaultStorePlugin extends IXLSXSectionProcessorPlugin {
     @Override
-    public void onProcessRow(IXLSXSheetProcessor sheetProcessor, SectionContext ctx, XLSXRow row, XLSXProcessMode mode) throws Exception {
+    public void onProcessRow(IXLSXSheetProcessor sheetProcessor, SectionContext ctx, XLSXRow row, XLSXProcessMode mode) {
       CountryGroup group = new CountryGroup();
       mapRow(ctx, row, group);
       group = locationService.getCountryGroupLogic().saveCountryGroup(group);

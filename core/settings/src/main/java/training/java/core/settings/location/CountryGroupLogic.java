@@ -24,6 +24,10 @@ public class CountryGroupLogic {
   @Autowired
   private CountryCountryGroupRelationRepository groupRelationRepo;
 
+  public String message() {
+    return "Hello";
+  }
+
   public CountryGroup getCountryGroup(String name) {
     return groupRepo.getByName(name);
   }
@@ -91,5 +95,9 @@ public class CountryGroupLogic {
 
   public List<Country> findCountries(CountryGroup countryGroup) {
     return countryRepo.findByCountryGroup(countryGroup.getId());
+  }
+
+  public List<CountryGroup> findAll() {
+    return groupRepo.findAll();
   }
 }

@@ -1,12 +1,10 @@
 archivesBaseName = "training-java-settings"
 
-eclipse {
-    project {
-        name = 'training-java-settings'
-    }
+dependencies {
+    api project(":training-java-spring-framework")
+    api project(":training-java-xlsx")
 }
 
-dependencies {
-    compile project(":training-java-spring-framework")
-    compile project(":training-java-xlsx")
+test {
+    useJUnitPlatform()
 }

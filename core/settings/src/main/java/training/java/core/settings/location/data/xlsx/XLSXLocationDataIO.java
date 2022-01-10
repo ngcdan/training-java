@@ -12,8 +12,8 @@ public class XLSXLocationDataIO {
   public void inputLocations(String xlsxFile) throws Exception {
     XLSXDataSheetProcessor xlsxProcessor =
       new XLSXDataSheetProcessor().open(xlsxFile);
-
     xlsxProcessor.process("Country Groups", createCountryGroupSheetProcessor());
+    xlsxProcessor.close();
   }
 
   private XLSXSimpleSheetProcessor createCountryGroupSheetProcessor() {
