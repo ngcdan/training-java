@@ -16,9 +16,13 @@ public class LocationController {
   private LocationService service;
 
   @GetMapping("country/group/{code}")
-  public @ResponseBody
-  CountryGroup getCountryGroup(HttpSession session, @PathVariable("code") String code) {
+  public @ResponseBody CountryGroup getCountryGroup(HttpSession session, @PathVariable("code") String code) {
     return service.getCountryGroup(code);
+  }
+
+  @GetMapping("country/group/all")
+  public @ResponseBody List<CountryGroup> findAllCountryGroup(HttpSession session) {
+    return service.findAllCountryGroups();
   }
 
   @GetMapping("country/group/{groupId}/children")

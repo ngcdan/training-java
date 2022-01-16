@@ -32,7 +32,11 @@ public class LocationService {
   @Autowired
   private LocationLogic locationLogic;
 
-  //Country group 
+  //Country group
+  public List<CountryGroup> findAllCountryGroups() {
+    return countryGroupLogic.findAll();
+  }
+
   @Transactional(readOnly = true)
   public CountryGroup getCountryGroup(String name) {
     return countryGroupLogic.getCountryGroup(name);
@@ -173,4 +177,5 @@ public class LocationService {
   public Location saveLocation(Location location) {
     return locationLogic.saveLocation(location);
   }
+
 }
