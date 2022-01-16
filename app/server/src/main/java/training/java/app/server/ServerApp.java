@@ -3,12 +3,14 @@ package training.java.app.server;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import training.java.core.settings.ModuleCoreSettingConfig;
 import training.java.core.settings.location.data.LocationData;
@@ -17,9 +19,10 @@ import training.java.core.settings.location.data.LocationData;
 @EnableConfigurationProperties
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 //@Import(ModuleCoreSettingConfig.class)
-public class ServerApp {
+public class ServerApp implements CommandLineRunner {
   static Logger logger = LoggerFactory.getLogger(ServerApp.class);
 
+  /*
   static ConfigurableApplicationContext context;
 
   static public ApplicationContext run(String[] args, long wait) throws Exception {
@@ -60,9 +63,8 @@ public class ServerApp {
     run(args, 30000);
     Thread.currentThread().join();
   }
+   */
 
-
-  /*
   @Autowired
   private ApplicationContext context;
 
@@ -82,5 +84,4 @@ public class ServerApp {
     LocationData data = new LocationData(context);
     data.initialize();
   }
-   */
 }
