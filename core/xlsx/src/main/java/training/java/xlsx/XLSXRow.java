@@ -1,6 +1,7 @@
 package training.java.xlsx;
 
 import lombok.Getter;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
@@ -108,7 +109,8 @@ public class XLSXRow {
 
   public String getCellAsString(String colName) {
     final String ret = getCellAsText(this, headerMapping, colName);
-    return ret.trim();
+    if(StringUtils.isNotEmpty(ret)) ret.trim();
+    return ret;
   }
 
   static public String getCellAsText(XLSXRow row, HeaderMapping hMapping, String colName) {
