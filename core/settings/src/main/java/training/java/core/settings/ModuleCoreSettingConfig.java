@@ -1,4 +1,4 @@
-package training.java.core.settings.config;
+package training.java.core.settings;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @ComponentScan(
   basePackages = {
-    "training.java.core.settings.*"
+    "training.java.core.settings"
   }
 )
 @EnableJpaRepositories(
@@ -21,8 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EntityScan(
   basePackages = {
     "training.java.core.settings.location.entity",
-    "training.java.core.settings.location.entity",
-    "training.java.core.settings.location.entity"
+    "training.java.core.settings.db.entity",
   }
 )
 @EnableConfigurationProperties

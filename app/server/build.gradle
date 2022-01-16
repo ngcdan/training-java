@@ -8,7 +8,7 @@ configurations {
 }
 
 configurations {
-    commonJars { transitive = false }
+    commonJars { transitive = true }
     springJars { transitive = true }
     hibernateJars { transitive = false }
     serverAppJars { transitive = false }
@@ -16,17 +16,18 @@ configurations {
 
 dependencies {
     api project(':training-java-spring-framework')
-    api project(':training-java-io')
-    api project(':training-java-xlsx')
-    api project(':training-java-settings')
+    implementation project(':training-java-xlsx')
+    implementation project(':training-java-settings')
 
     springJars project(':training-java-spring-framework')
     serverAppJars project(':training-java-app-server')
     serverAppJars project(':training-java-settings')
     serverAppJars project(':training-java-io')
+    serverAppJars project(':training-java-ds')
     serverAppJars project(':training-java-xlsx')
 
-    hibernateJars 'com.h2database:h2:1.3.148'
+    commonJars 'org.apache.poi:poi-ooxml:5.1.0'
+    commonJars 'com.h2database:h2:1.3.148'
 }
 
 task releaseServer {

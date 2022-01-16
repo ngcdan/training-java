@@ -20,6 +20,11 @@ public class LocationController {
     return service.getCountryGroup(code);
   }
 
+  @GetMapping("country/group/all")
+  public @ResponseBody List<CountryGroup> findAllCountryGroup(HttpSession session) {
+    return service.findAllCountryGroups();
+  }
+
   @GetMapping("country/group/{groupId}/children")
   public @ResponseBody List<CountryGroup> getCountryGroupChildren(HttpSession session, @PathVariable("groupId") Long groupId) {
     return service.findCountryGroupChildren(groupId);
@@ -50,7 +55,8 @@ public class LocationController {
   }
 
   @GetMapping("country/{code}")
-  public @ResponseBody Country loadCountry(
+  public @ResponseBody
+  Country loadCountry(
     HttpSession session, @PathVariable("code") String code) {
     return service.getCountry(code);
   }
@@ -96,7 +102,8 @@ public class LocationController {
   }
 
   @GetMapping("{code}")
-  public @ResponseBody Location loadLocation(HttpSession session, @PathVariable("code") String code){
+  public @ResponseBody
+  Location loadLocation(HttpSession session, @PathVariable("code") String code){
     return service.getLocation(code);
   }
 
@@ -106,7 +113,8 @@ public class LocationController {
   }
 
   @PutMapping("type")
-  public @ResponseBody LocationType saveLocationType(HttpSession session, @RequestBody LocationType locationType) {
+  public @ResponseBody
+  LocationType saveLocationType(HttpSession session, @RequestBody LocationType locationType) {
     return service.saveLocationType(locationType);
   }
 

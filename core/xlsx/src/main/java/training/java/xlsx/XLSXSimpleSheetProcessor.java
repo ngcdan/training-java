@@ -19,6 +19,10 @@ public class XLSXSimpleSheetProcessor implements IXLSXSheetProcessor {
     return (T) sectionProcessor;
   }
 
+  public XLSXSimpleSheetProcessor(XLSXSectionProcessor<?> sectionProcessor) {
+    this.sectionProcessor = sectionProcessor;
+  }
+
   public void process(DataContext ctx, XLSXWorkbook workbook, String sheetName) throws Exception {
     process(ctx, workbook.getWorkbook(), sheetName, XLSXProcessMode.CUSTOM);
   }

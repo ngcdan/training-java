@@ -1,5 +1,5 @@
 archivesBaseName = "training-java-io"
 
 dependencies {
-    compile project(":training-java-ds")
+    api project(":training-java-ds")
 }

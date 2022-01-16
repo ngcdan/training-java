@@ -44,11 +44,6 @@ public class CountryGroup extends AbstractPersistable<Long> {
 
   public CountryGroup withParent(CountryGroup parent) {
     this.parentId = parent.getId();
-    if (parent.getParentIdPath() == null) {
-      this.parentIdPath = parent.getId().toString();
-    } else {
-      this.parentIdPath = parent.getParentIdPath() + "/" + parent.getId();
-    }
     return this;
   }
 }

@@ -2,7 +2,11 @@ package training.java.xlsx;
 
 import org.eclipse.jetty.util.StringUtil;
 
+import java.lang.reflect.Field;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class XSLXCell<T> {
@@ -86,4 +90,104 @@ public class XSLXCell<T> {
       this.message   = message;
     }
   }
+
+  public static class TextField<T> extends XSLXCell<T> {
+
+    private final String field;
+
+    public TextField(String header, String field, boolean required) {
+      super(header);
+      this.field = field;
+    }
+
+    @Override
+    public void map(SectionContext ctx, XLSXRow row, T entity) {
+      String cell = row.getCellAsString(header, null);
+      map(ctx, row, entity, cell);
+    }
+
+    @Override
+    public void map(SectionContext sectionCtx, XLSXRow row, T entity, String cellVal) {
+      try {
+        final Class<?> aClass = entity.getClass();
+        final Field field = aClass.getDeclaredField(this.field);
+        field.setAccessible(true);
+        field.set(entity, cellVal);
+      } catch(Exception e) {
+        throw new RuntimeException(cellVal);
+      }
+    }
+  }
+
+  static public class DoubleField<T> extends XSLXCell<T> {
+    String field;
+    double defaultValue;
+
+    public DoubleField(String header, String field, double defaultVal, boolean required) {
+      super(header, required);
+      this.field = field;
+      this.defaultValue = defaultVal;
+    }
+
+    @Override
+    public void map(SectionContext ctx, XLSXRow row, T entity) {
+      Double val = row.getCellAsDouble(header, defaultValue);
+      try {
+        final Class<?> aClass = entity.getClass();
+        final Field field = aClass.getDeclaredField(this.field);
+        field.setAccessible(true);
+        field.set(entity, val);
+
+      } catch(Exception e) {
+        throw new RuntimeException();
+      }
+    }
+
+    @Override
+    public void map(SectionContext ctx, XLSXRow row, T entity, String cellVal) {
+      try {
+        final Class<?> aClass = entity.getClass();
+        final Field field = aClass.getDeclaredField(this.field);
+        field.setAccessible(true);
+        if(StringUtil.isEmpty(cellVal)) {
+          field.set(entity, defaultValue);
+        } else {
+          field.set(entity, Double.parseDouble(cellVal));
+        }
+      } catch(NoSuchFieldException | IllegalAccessException e) {
+        throw new RuntimeException(e);
+      }
+    }
+  }
+
+  static public class CompactDate<T> extends XSLXCell<T> {
+    String field;
+
+    public CompactDate(String header, String field, boolean required) {
+      super(header, required);
+      this.field = field;
+    }
+
+    @Override
+    public void map(SectionContext ctx, XLSXRow row, T entity) {
+      String val = row.getCellAsString(header, null);
+      map(ctx, row, entity, val);
+    }
+
+    @Override
+    public void map(SectionContext ctx, XLSXRow row, T entity, String val) {
+      if(StringUtil.isEmpty(val)) return;
+      try {
+        Date date = new SimpleDateFormat("dd/MM/yyyy").parse(val);
+        final Class<?> aClass = entity.getClass();
+        final Field field = aClass.getDeclaredField(this.field);
+        field.setAccessible(true);
+        field.set(entity, date);
+      } catch (ParseException | NoSuchFieldException | IllegalAccessException e) {
+        throw new RuntimeException(val);
+      }
+    }
+  }
+
+
 }
