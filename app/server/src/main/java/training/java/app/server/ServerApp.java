@@ -26,7 +26,7 @@ public class ServerApp implements CommandLineRunner {
   private ApplicationContext context;
 
   public static void main(String[] args) {
-    logger.info("Launch ServerApp with args: {}", StringUtils.join(args, " "));
+    logger.info("Launch ServerApp with args\n: {}", StringUtils.join(args, " \n"));
     Class<?>[] source = {ModuleCoreSettingConfig.class, ServerApp.class};
     SpringApplication app = new SpringApplication(source);
     app.setBannerMode(Banner.Mode.OFF);
@@ -39,7 +39,6 @@ public class ServerApp implements CommandLineRunner {
 
 
   @Override
-  //@Transactions
   public void run(String... args) throws Exception {
     logger.info("Import data location.........");
     LocationData data = new LocationData(context);

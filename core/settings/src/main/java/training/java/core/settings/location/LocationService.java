@@ -23,13 +23,13 @@ public class LocationService {
   @Autowired @Getter
   private CountryGroupLogic countryGroupLogic;
 
-  @Autowired
+  @Autowired @Getter
   private LocationAliasLogic locationAliasLogic;
 
-  @Autowired
+  @Autowired @Getter
   private LocationTypeLogic locationTypeLogic;
 
-  @Autowired
+  @Autowired @Getter
   private LocationLogic locationLogic;
 
   //Country group

@@ -32,4 +32,10 @@ public class LocationAlias extends AbstractPersistable<Long> {
   private String creator;
 
   private String description;
+
+  public LocationAlias(String code, String type, String label) {
+    this.code = code;
+    this.type = type;
+    this.label = label;
+  }
 }
