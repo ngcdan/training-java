@@ -46,9 +46,9 @@ PROJECT_DIR=`cd "$bin"; pwd`
 ROOT_DIR="$PROJECT_DIR/../.."
 
 JAVACMD="$JAVA_HOME/bin/java"
-APP_HOME="$PROJECT_DIR/app/server"
+APP_HOME="$PROJECT_DIR"
 
-LIB="$PROJECT_DIR:$APP_HOME/lib/*:$APP_HOME/lib/spring/*:$APP_HOME/lib/hibernate/*"
+LIB="$PROJECT_DIR:$APP_HOME/libs/*:$APP_HOME/libs/spring/*:$APP_HOME/libs/hibernate/*:$APP_HOME/libs/common/*"
 CLASSPATH="${CLASSPATH}:$LIB:$APP_HOME/config"
 
 if $window; then

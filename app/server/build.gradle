@@ -19,46 +19,41 @@ dependencies {
     implementation project(':training-java-xlsx')
     implementation project(':training-java-settings')
 
+    commonJars 'org.apache.poi:poi-ooxml:5.1.0'
+    hibernateJars 'com.h2database:h2:1.3.148'
+
     springJars project(':training-java-spring-framework')
-    serverAppJars project(':training-java-app-server')
+
     serverAppJars project(':training-java-settings')
     serverAppJars project(':training-java-io')
     serverAppJars project(':training-java-ds')
     serverAppJars project(':training-java-xlsx')
-
-    commonJars 'org.apache.poi:poi-ooxml:5.1.0'
-    commonJars 'com.h2database:h2:1.3.148'
+    serverAppJars project(':training-java-app-server')
 }
 
 task releaseServer {
     doLast {
         println "\n\n";
-        println "Copy Release template structure /Users/linuss/Dev/projects/training-java/app/server";
         println "##############################################################################################";
 
-        def serverAppDir = "/Users/linuss/Dev/projects/training-java/app/server/app/server";
+        def serverAppDir = "/Users/linuss/Dev/projects/training/training-java/app/server";
         println "\n";
         println "Deploy to  ${serverAppDir}";
 
         configurations.commonJars.each { File file ->
-            copy { from file into "${serverAppDir}/lib" }
+            copy { from file into "${serverAppDir}/libs/common" }
         }
 
         configurations.springJars.each { File file ->
-            copy { from file into "${serverAppDir}/lib/spring" }
+            copy { from file into "${serverAppDir}/libs/spring" }
         }
 
         configurations.hibernateJars.each { File file ->
-            copy { from file into "${serverAppDir}/lib/hibernate" }
+            copy { from file into "${serverAppDir}/libs/hibernate" }
         }
 
         configurations.serverAppJars.each { File file ->
-            copy { from file into "${serverAppDir}/lib" }
-        }
-
-        copy {
-            from "src/app/server";
-            into "${serverAppDir}";
+            copy { from file into "${serverAppDir}/libs" }
         }
     }
 }
