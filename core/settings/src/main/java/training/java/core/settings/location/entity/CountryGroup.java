@@ -14,7 +14,10 @@ import javax.validation.constraints.NotNull;
 @Table(
   name = CountryGroup.TABLE_NAME,
   uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"name"}),
+    @UniqueConstraint(
+      name = Country.TABLE_NAME + "_name",
+      columnNames = { "name" }
+    )
   },
   indexes = { @Index(columnList="name") }
 )
@@ -24,9 +27,6 @@ import javax.validation.constraints.NotNull;
 public class CountryGroup extends AbstractPersistable<Long> {
   private static final long serialVersionUID = 1L;
   public static final String TABLE_NAME = "settings_country_group";
-
-  @Column(name="parent_id_path")
-  private String parentIdPath;
 
   @Column(name="parent_id")
   private Long   parentId;

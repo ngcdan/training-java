@@ -14,11 +14,11 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(
-  name = CountryCountryGroupRelation.TABLE_NAME
+  name = CountryGroupRelation.TABLE_NAME
 )
 @JsonInclude(Include.NON_NULL)
 @NoArgsConstructor @Getter @Setter
-public class CountryCountryGroupRelation extends AbstractPersistable<Long> {
+public class CountryGroupRelation extends AbstractPersistable<Long> {
   private static final long serialVersionUID = 1L;
 
   public static final String TABLE_NAME = "settings_country_group_rel";
@@ -28,11 +28,11 @@ public class CountryCountryGroupRelation extends AbstractPersistable<Long> {
   private Long countryId;
 
   @NotNull
-  @Column(name = "country_group_id")
-  private Long countryGroupId;
+  @Column(name = "group_id")
+  private Long groupId;
 
-  public CountryCountryGroupRelation(CountryGroup group, Country country) {
-   countryGroupId = group.getId();
+  public CountryGroupRelation(CountryGroup group, Country country) {
+   groupId = group.getId();
    countryId = country.getId();
   }
 }

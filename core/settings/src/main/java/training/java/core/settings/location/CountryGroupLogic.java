@@ -3,9 +3,9 @@ package training.java.core.settings.location;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import training.java.core.settings.location.entity.Country;
-import training.java.core.settings.location.entity.CountryCountryGroupRelation;
 import training.java.core.settings.location.entity.CountryGroup;
-import training.java.core.settings.location.repository.CountryCountryGroupRelationRepository;
+import training.java.core.settings.location.entity.CountryGroupRelation;
+import training.java.core.settings.location.repository.CountryGroupRelationRepository;
 import training.java.core.settings.location.repository.CountryGroupRepository;
 import training.java.core.settings.location.repository.CountryRepository;
 
@@ -22,7 +22,7 @@ public class CountryGroupLogic {
   private CountryRepository countryRepo;
 
   @Autowired
-  private CountryCountryGroupRelationRepository groupRelationRepo;
+  private CountryGroupRelationRepository groupRelationRepo;
 
   public String message() {
     return "Hello";
@@ -41,23 +41,21 @@ public class CountryGroupLogic {
   public CountryGroup saveCountryGroup(CountryGroup group) {
     if(group.isNew() && Objects.nonNull(group.getParentId())) {
       CountryGroup groupParent = groupRepo.getById(group.getParentId());
-      if(Objects.nonNull(groupParent)) {
-        group.withParent(groupParent);
-      }
+      group.withParent(groupParent);
     }
     return groupRepo.save(group);
   }
 
-  public CountryCountryGroupRelation createCountryGroupRelation(CountryGroup group,
-                                                                Country country) {
-    return groupRelationRepo.save(new CountryCountryGroupRelation(group, country));
+  public CountryGroupRelation createCountryGroupRelation(CountryGroup group,
+                                                         Country country) {
+    return groupRelationRepo.save(new CountryGroupRelation(group, country));
   }
 
   public boolean createCountryGroupRelations(Long groupId, List<Long> countryIds) {
     CountryGroup group = this.groupRepo.getById(groupId);
     for(Long countryId : countryIds) {
-      CountryCountryGroupRelation relation = new CountryCountryGroupRelation();
-      relation.setCountryGroupId(groupId);
+      CountryGroupRelation relation = new CountryGroupRelation();
+      relation.setGroupId(groupId);
       relation.setCountryId(countryId);
       groupRelationRepo.save(relation);
     }
@@ -79,13 +77,13 @@ public class CountryGroupLogic {
   public boolean deleteCountryGroupRelations(Long groupId, List<Long> countryIds) {
     CountryGroup group = this.groupRepo.getById(groupId);
     for(Long countryId : countryIds) {
-      CountryCountryGroupRelation relation = groupRelationRepo.getRelationByCountryIdAndCountryGroupId(countryId, groupId);
+      CountryGroupRelation relation = groupRelationRepo.getRelation(countryId, groupId);
       groupRelationRepo.delete(relation);
     }
     return true;
   }
 
-  public CountryCountryGroupRelation saveCountryGroupRelation(CountryCountryGroupRelation relation) {
+  public CountryGroupRelation saveCountryGroupRelation(CountryGroupRelation relation) {
     return groupRelationRepo.save(relation);
   }
 

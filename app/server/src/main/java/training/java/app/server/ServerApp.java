@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
+import training.java.core.migration.ModuleCoreMigrationConfig;
 import training.java.core.settings.ModuleCoreSettingConfig;
 import training.java.core.settings.location.data.LocationData;
 
@@ -27,7 +28,7 @@ public class ServerApp implements CommandLineRunner {
   public static void main(String[] args) {
     logger.info("Launch ServerApp with args\n: {}", StringUtils.join(args, " \n"));
 
-    Class<?>[] source = {ModuleCoreSettingConfig.class, ServerApp.class};
+    Class<?>[] source = {ModuleCoreSettingConfig.class, ModuleCoreMigrationConfig.class, ServerApp.class};
     SpringApplication app = new SpringApplication(source);
     app.setBannerMode(Banner.Mode.OFF);
     Runtime runtime = Runtime.getRuntime();

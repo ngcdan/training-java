@@ -1,15 +1,16 @@
 spring:
-  h2:
-    console.enabled: true
   jpa:
-    show-sql: false
-    generate-ddl: true
-    hibernate:
-      ddl-auto: create-drop
-    database: h2
-    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      show-sql: true
+      generate-ddl: true
+      hibernate:
+        hbm2ddl:
+          auto: create
+        dialect: org.hibernate.dialect.PostgreSQL94Dialect
+      database: postgresql
   datasource:
-    url: jdbc:h2:mem:training-java-db
-    username: sa
-    password:
-    driverClassName: org.h2.Driver
+    driver-class-name: org.postgresql.Driver
+    platform: postgresql
+    url: jdbc:postgresql://localhost:5432/ofonedb
+    username: postgres
+    password: admin

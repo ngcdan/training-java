@@ -58,12 +58,12 @@ public class LocationService {
   }
 
   @Transactional
-  public CountryCountryGroupRelation createCountryGroupRelation(CountryGroup countryGroup, Country country) {
+  public CountryGroupRelation createCountryGroupRelation(CountryGroup countryGroup, Country country) {
     return countryGroupLogic.createCountryGroupRelation(countryGroup, country);
   }
 
   @Transactional
-  public CountryCountryGroupRelation createCountryGroupRelation(CountryCountryGroupRelation relation) {
+  public CountryGroupRelation createCountryGroupRelation(CountryGroupRelation relation) {
     return countryGroupLogic.saveCountryGroupRelation(relation);
   }
 

@@ -17,6 +17,9 @@ project(':training-java-io').projectDir = new File('core/io')
 include 'training-java-xlsx'
 project(':training-java-xlsx').projectDir = new File('core/xlsx')
 
+include 'training-java-migration'
+project(':training-java-migration').projectDir = new File('core/migration')
+
 // TUTORIAL MODULES
 include 'training-java-design'
 project(':training-java-design').projectDir = new File('tutorials/design')

@@ -28,7 +28,6 @@ public class Country extends AbstractPersistable<Long> {
   public static final String TABLE_NAME = "settings_country";
 
   @NotNull
-  @Column(unique = true)
   private String code;
 
   @NotNull

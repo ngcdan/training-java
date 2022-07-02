@@ -18,12 +18,14 @@ dependencies {
     api project(':training-java-spring-framework')
     implementation project(':training-java-xlsx')
     implementation project(':training-java-settings')
+    implementation project(':training-java-migration')
 
     commonJars 'org.apache.poi:poi-ooxml:5.1.0'
     hibernateJars 'com.h2database:h2:1.3.148'
 
     springJars project(':training-java-spring-framework')
 
+    serverAppJars project(':training-java-migration')
     serverAppJars project(':training-java-settings')
     serverAppJars project(':training-java-io')
     serverAppJars project(':training-java-ds')

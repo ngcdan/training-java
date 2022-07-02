@@ -1,0 +1,6 @@
+archivesBaseName = "training-java-migration" //The base name to use for archive files.
+
+dependencies {
+    api project(":training-java-spring-framework")
+
+}

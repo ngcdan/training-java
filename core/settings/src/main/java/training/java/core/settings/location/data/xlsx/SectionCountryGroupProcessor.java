@@ -1,7 +1,8 @@
 package training.java.core.settings.location.data.xlsx;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import training.java.core.settings.location.LocationService;
+import training.java.core.settings.location.CountryGroupLogic;
 import training.java.core.settings.location.entity.CountryGroup;
 import training.java.xlsx.*;
 
@@ -10,7 +11,7 @@ import java.util.Objects;
 public class SectionCountryGroupProcessor  extends XLSXSectionProcessor<CountryGroup> {
 
   @Autowired
-  protected LocationService locationService;
+  protected CountryGroupLogic groupLogic;
 
   protected XSLXCell<CountryGroup> LABEL, NAME, PARENT_NAME;
 
@@ -18,7 +19,8 @@ public class SectionCountryGroupProcessor  extends XLSXSectionProcessor<CountryG
     LABEL = new XSLXCell.TextField<>("Label", "label", true);
     NAME = new XSLXCell.TextField<>("Name", "name", true);
     PARENT_NAME = new XSLXCell<CountryGroup>("Parent Name", false).mapper((ctx, row, charge, cell) -> {
-      final CountryGroup countryGroup = locationService.getCountryGroup(cell);
+      if(StringUtils.isEmpty(cell)) return;
+      CountryGroup countryGroup = groupLogic.getCountryGroup(cell);
       if(Objects.isNull(countryGroup)) return;
       charge.withParent(countryGroup);
     });
@@ -42,7 +44,7 @@ public class SectionCountryGroupProcessor  extends XLSXSectionProcessor<CountryG
     public void onProcessRow(IXLSXSheetProcessor sheetProcessor, SectionContext ctx, XLSXRow row, XLSXProcessMode mode) {
       CountryGroup group = new CountryGroup();
       mapRow(ctx, row, group);
-      group = locationService.getCountryGroupLogic().saveCountryGroup(group);
+      groupLogic.saveCountryGroup(group);
     }
   }
 }
