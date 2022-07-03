@@ -1,16 +1,21 @@
 spring:
   jpa:
+    show-sql: true
+    generate-ddl: true
     properties:
-      show-sql: true
-      generate-ddl: true
       hibernate:
-        hbm2ddl:
-          auto: create
-        dialect: org.hibernate.dialect.PostgreSQL94Dialect
-      database: postgresql
+        format_sql: true
+        ddl-auto: create
+#        hbm2ddl:
+#          auto: update
+        dialect: org.hibernate.dialect.MySQL8Dialect
+      database: mysql
   datasource:
-    driver-class-name: org.postgresql.Driver
-    platform: postgresql
-    url: jdbc:postgresql://localhost:5432/ofonedb
-    username: postgres
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/training?allowPublicKeyRetrieval=true&useSSL=false
+    username: root
     password: admin
+
+logging:
+  level:
+    org.hibernate: DEBUG

@@ -5,12 +5,13 @@ networks:
 
 services:
   db:
-    image: mysql:5.7
-    container_name: conference
+    platform: linux/amd64
+    image: mysql:8.0
+    container_name: training-java
     ports:
       - 3306:3306
     volumes:
       - "./.data/db:/var/lib/mysql"
     environment:
       MYSQL_ROOT_PASSWORD: admin
-      MYSQL_DATABASE: training-java
+      MYSQL_DATABASE: training

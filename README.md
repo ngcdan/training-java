@@ -31,8 +31,5 @@ You can access rest api via http://localhost:8080/rest/v1.0.0/demo/hello
 
 DB 
 ```
- url: jdbc:h2:mem:training-java-db
- username: sa
- password: 
- driverClassName: org.h2.Driver
+docker compose up -d
 ```

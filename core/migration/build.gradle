@@ -2,5 +2,5 @@ archivesBaseName = "training-java-migration" //The base name to use for archive 
 
 dependencies {
     api project(":training-java-spring-framework")
-
+    compile "org.flywaydb:flyway-core:8.5.13"
 }
