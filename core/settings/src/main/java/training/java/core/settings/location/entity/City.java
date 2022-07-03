@@ -35,6 +35,9 @@ public class City extends AbstractPersistable<Long> {
   @Column(name = "state_code")
   private String  stateCode;
 
+  @Column(name = "column_test")
+  private String  columnTest;
+
   @NotNull
   @Column(unique = true)
   private String code;

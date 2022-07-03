@@ -1,7 +1,7 @@
 archivesBaseName = "training-java-settings"
 
 dependencies {
-    api project(":training-java-spring-framework")
+    api project(":training-java-data")
     api project(":training-java-xlsx")
 }
 

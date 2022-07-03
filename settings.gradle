@@ -8,6 +8,9 @@ project(':training-java-app-server').projectDir = new File('app/server')
 include 'training-java-spring-framework'
 project(':training-java-spring-framework').projectDir = new File('core/spring-framework')
 
+include 'training-java-data'
+project(':training-java-data').projectDir = new File('core/data')
+
 include 'training-java-settings'
 project(':training-java-settings').projectDir = new File('core/settings')
 

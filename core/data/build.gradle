@@ -1,0 +1,9 @@
+archivesBaseName = "training-java-data"
+
+dependencies {
+    api project(":training-java-spring-framework")
+}
+
+test {
+    useJUnitPlatform()
+}

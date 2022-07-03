@@ -27,9 +27,17 @@ To Run:
 $ ./server.sh start
 ```
 
+To run with init DB 
+```sh
+$ ./server.sh start --profile=data
+```
+
+```
+
 You can access rest api via http://localhost:8080/rest/v1.0.0/demo/hello
 
 DB 
 ```
 docker compose up -d
 ```
+

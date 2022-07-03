@@ -25,6 +25,7 @@ dependencies {
 
     springJars project(':training-java-spring-framework')
 
+    serverAppJars project(':training-java-data')
     serverAppJars project(':training-java-migration')
     serverAppJars project(':training-java-settings')
     serverAppJars project(':training-java-io')
